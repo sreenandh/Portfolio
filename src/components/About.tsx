@@ -111,7 +111,7 @@ const About = () => {
                 >
                   <Award className="w-6 h-6 text-blue-400 mx-auto mb-3" />
                   <p className="text-sm text-gray-400 mb-1">Experience</p>
-                  <p className="text-white font-medium">9 Months</p>
+                  <p className="text-white font-medium">10 Months</p>
                 </motion.div>
 
                 <motion.div

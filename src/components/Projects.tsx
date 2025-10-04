@@ -11,28 +11,37 @@ const Projects = () => {
 
   const projects = [
     {
+      title: 'Param Yogi School of Yoga',
+      description: 'Production-grade educational website built with Next.js 13+ featuring automated content workflow, role-based admin dashboard, and real-time database synchronization. Reduced storage overhead by 40% with Supabase integration.',
+      image: 'https://images.unsplash.com/photo-1588286840104-8957b019727f?w=600&q=80',
+      technologies: ['Next.js', 'React', 'Supabase', 'Tailwind CSS', 'JWT', 'reCAPTCHA'],
+      github: '#',
+      live: 'https://paramyogi.com',
+      featured: true
+    },
+    {
       title: 'FitPilotAI',
-      description: 'An AI-powered fitness application that provides personalized workout plans and nutrition guidance. Features real-time progress tracking and adaptive recommendations.',
-      image: 'https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&cs=tinysrgb&w=800 ',
-      technologies: ['React', 'Node.js', 'AI/ML', 'MongoDB', 'Express.js'],
+      description: 'An AI-powered fitness application that provides personalized workout plans and nutrition guidance. Features real-time progress tracking and adaptive recommendations using Gemini LLM.',
+      image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80',
+      technologies: ['React', 'Next.js', 'Clerk', 'Vapi', 'Convex', 'Gemini AI'],
       github: 'https://github.com/sreenandh/FitPilotAI',
       live: '#',
       featured: true
     },
     {
       title: 'NestFind Real Estate',
-      description: 'A comprehensive real estate platform for property listings, searches, and management. Includes advanced filtering, virtual tours, and agent communication.',
-      image: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Express.js', 'JWT'],
+      description: 'A comprehensive real estate platform for property listings, searches, and management. Includes advanced filtering, real-time chat with Socket.IO, interactive maps, and agent communication.',
+      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80',
+      technologies: ['React', 'Node.js', 'MongoDB', 'Socket.IO', 'Express.js', 'JWT'],
       github: 'https://github.com/sreenandh/NestFind-Real-Estate-Web-App',
       live: '#',
       featured: true
     },
     {
       title: 'Employee Document Manager',
-      description: 'A secure document management system for organizations to handle employee records, with role-based access control and audit trails.',
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'JWT'],
+      description: 'A secure document management system for organizations to handle employee records, with role-based access control, AWS S3 integration, and automated backup system.',
+      image: 'https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=600&q=80',
+      technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'AWS S3', 'JWT'],
       github: 'https://github.com/sreenandh/Employee-docs_manage',
       live: '#',
       featured: false
@@ -77,15 +86,13 @@ const Projects = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid gap-8">
+          <div className="grid gap-8 md:grid-cols-2">
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
-                className={`group relative bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 ${
-                  project.featured ? 'lg:grid lg:grid-cols-2' : ''
-                }`}
+                className="group relative bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 flex flex-col"
               >
                 {project.featured && (
                   <div className="absolute top-4 right-4 z-10">
@@ -96,28 +103,28 @@ const Projects = () => {
                   </div>
                 )}
 
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden h-48">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-64 lg:h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
                 </div>
 
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors duration-300">
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-gray-300 mb-4 leading-relaxed text-sm flex-1">
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm border border-blue-500/30"
+                        className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-500/30"
                       >
                         {tech}
                       </span>
@@ -125,17 +132,19 @@ const Projects = () => {
                   </div>
 
                   <div className="flex space-x-4">
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300"
-                    >
-                      <Github size={20} />
-                      <span>Code</span>
-                    </motion.a>
+                    {project.github !== '#' && (
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm"
+                      >
+                        <Github size={18} />
+                        <span>Code</span>
+                      </motion.a>
+                    )}
                     {project.live !== '#' && (
                       <motion.a
                         href={project.live}
@@ -143,9 +152,9 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300"
+                        className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors duration-300 text-sm"
                       >
-                        <ExternalLink size={20} />
+                        <ExternalLink size={18} />
                         <span>Live Demo</span>
                       </motion.a>
                     )}

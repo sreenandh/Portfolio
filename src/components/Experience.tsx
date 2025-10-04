@@ -11,15 +11,28 @@ const Experience = () => {
 
   const experiences = [
     {
+      title: 'Software Developer',
+      company: 'Cybmirror Innovations LLP',
+      location: 'Kochi, Kerala',
+      period: 'September 2025 – Present',
+      description: [
+        'Develop and maintain web applications with focus on clean, scalable, and efficient code',
+        'Work on API integration, database management, and front-end responsiveness',
+        'Participate in debugging, testing, and deployment of applications to ensure high performance',
+        'Collaborate with cross-functional teams to design and implement software features'
+      ],
+      technologies: ['Full Stack Development', 'Web Applications', 'API Integration', 'Database Management']
+    },
+    {
       title: 'Software Engineer Intern',
       company: 'Nubolerta Technology Solutions Private Limited',
       location: 'Remote',
       period: 'May 2025 – June 2025',
       description: [
-        'Contributed to CloudBank, a cloud-native core banking platform serving rural banks with comprehensive banking services',
-        'Developed multiple full-stack features using Angular, Node.js, Express, and MySQL',
-        'Designed and implemented RESTful APIs with comprehensive error handling and input validation',
-        'Participated in code reviews and implemented secure coding practices including JWT authentication'
+        'Contributed to CloudBank, a cloud-native core banking platform serving rural banks',
+        'Developed full-stack features using Angular, Node.js, Express, and MySQL',
+        'Designed RESTful APIs with error handling, input validation, and JWT authentication',
+        'Participated in code reviews and implemented secure coding practices'
       ],
       technologies: ['Angular', 'Node.js', 'Express', 'MySQL', 'RESTful APIs', 'JWT Authentication']
     },
@@ -29,12 +42,11 @@ const Experience = () => {
       location: 'Kochi, Kerala',
       period: 'July 2024 – January 2025',
       description: [
-        'Built RESTful API endpoints enabling seamless client-server communication for web applications',
-        'Developed full-stack web applications using MongoDB, Express.js, React, and Node.js stack',
-        'Collaborated with development team on debugging and version control using Git/GitHub',
-        'Implemented responsive design ensuring compatibility across desktop, tablet, and mobile devices'
+        'Built full-stack web applications using MongoDB, Express.js, React, and Node.js stack',
+        'Developed RESTful API endpoints and implemented responsive design across all devices',
+        'Collaborated with development team on debugging and version control using Git/GitHub'
       ],
-      technologies: ['MongoDB', 'Express.js', 'React', 'Node.js', 'JavaScript', 'Git', 'GitHub', 'REST APIs']
+      technologies: ['MongoDB', 'Express.js', 'React', 'Node.js', 'JavaScript', 'Git', 'REST APIs']
     }
   ];
 
