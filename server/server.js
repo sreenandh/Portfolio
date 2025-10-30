@@ -138,7 +138,7 @@ app.post('/api/contact', async (req, res) => {
             
             <p style="color: #333; line-height: 1.6;">
               I'll review your message and get back to you as soon as possible. If your inquiry is urgent, 
-              feel free to reach out to me directly at <a href="mailto:${process.env.EMAIL_USER}" style="color: #4F46E5;">${process.env.EMAIL_USER}</a>.
+              feel free to reach out to me directly at <a href="mailto:${process.env.ADMIN_EMAIL}" style="color: #4F46E5;">${process.env.ADMIN_EMAIL}</a>.
             </p>
             
             <p style="color: #333; line-height: 1.6;">Best regards,<br><strong>Sreenandh M</strong></p>
