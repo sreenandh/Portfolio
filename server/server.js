@@ -1,5 +1,5 @@
 import express from 'express';
-import nodemailer from 'nodemailer';
+import { createTransporter } from 'nodemailer';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
@@ -37,8 +37,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/contact', limiter);
 
 // Create nodemailer transporter
-const createTransporter = () => {
-  return nodemailer.createTransporter({
+const createEmailTransporter = () => {
+  return createTransporter({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,
@@ -80,7 +80,7 @@ app.post('/api/contact', async (req, res) => {
       });
     }
 
-    const transporter = createTransporter();
+    const transporter = createEmailTransporter();
 
     // Email to yourself (notification)
     const adminMailOptions = {
