@@ -18,6 +18,7 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -29,24 +30,38 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage('');
 
     try {
-      // Create mailto link with form data
-      const subject = encodeURIComponent(formData.subject || 'Contact from Portfolio');
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      );
-      const mailtoLink = `mailto:sreenandhnandhu123@gmail.com?subject=${subject}&body=${body}`;
+      const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
       
-      window.location.href = mailtoLink;
-      
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+        setErrorMessage(data.error || 'Something went wrong. Please try again.');
+      }
     } catch (error) {
+      console.error('Error sending message:', error);
       setSubmitStatus('error');
+      setErrorMessage('Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 3000);
+      setTimeout(() => {
+        setSubmitStatus('idle');
+        setErrorMessage('');
+      }, 5000);
     }
   };
 
@@ -198,7 +213,9 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-slate-800/50 border border-blue-500/20 rounded-xl focus:outline-none focus:border-blue-400 transition-colors duration-300 text-white placeholder-gray-400"
+                      maxLength={100}
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-blue-500/20 rounded-xl focus:outline-none focus:border-blue-400 transition-colors duration-300 text-white placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="Your name"
                     />
                   </div>
@@ -213,7 +230,9 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-slate-800/50 border border-blue-500/20 rounded-xl focus:outline-none focus:border-blue-400 transition-colors duration-300 text-white placeholder-gray-400"
+                      maxLength={100}
+                      disabled={isSubmitting}
+                      className="w-full px-4 py-3 bg-slate-800/50 border border-blue-500/20 rounded-xl focus:outline-none focus:border-blue-400 transition-colors duration-300 text-white placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -229,7 +248,9 @@ const Contact = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-slate-800/50 border border-blue-500/20 rounded-xl focus:outline-none focus:border-blue-400 transition-colors duration-300 text-white placeholder-gray-400"
+                    maxLength={200}
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-blue-500/20 rounded-xl focus:outline-none focus:border-blue-400 transition-colors duration-300 text-white placeholder-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="Project discussion"
                   />
                 </div>
@@ -245,20 +266,32 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-slate-800/50 border border-blue-500/20 rounded-xl focus:outline-none focus:border-blue-400 transition-colors duration-300 text-white placeholder-gray-400 resize-none"
+                    maxLength={2000}
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-slate-800/50 border border-blue-500/20 rounded-xl focus:outline-none focus:border-blue-400 transition-colors duration-300 text-white placeholder-gray-400 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="Tell me about your project..."
                   />
+                  <div className="text-right mt-1">
+                    <span className={`text-xs ${
+                      formData.message.length > 1900 ? 'text-red-400' : 'text-gray-500'
+                    }`}>
+                      {formData.message.length}/2000
+                    </span>
+                  </div>
                 </div>
 
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                   className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-blue-500/25"
                 >
                   {isSubmitting ? (
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>Sending...</span>
+                    </>
                   ) : (
                     <>
                       <Send size={20} />
@@ -271,9 +304,9 @@ const Contact = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-green-400 text-center"
+                    className="text-green-400 text-center p-4 bg-green-500/10 border border-green-500/20 rounded-xl"
                   >
-                    Message sent successfully! I'll get back to you soon.
+                    ✅ Message sent successfully! You should receive a confirmation email shortly.
                   </motion.div>
                 )}
 
@@ -281,9 +314,9 @@ const Contact = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-red-400 text-center"
+                    className="text-red-400 text-center p-4 bg-red-500/10 border border-red-500/20 rounded-xl"
                   >
-                    Something went wrong. Please try again or contact me directly.
+                    ❌ {errorMessage || 'Something went wrong. Please try again or contact me directly.'}
                   </motion.div>
                 )}
               </form>
