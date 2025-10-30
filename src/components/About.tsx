@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { User, MapPin, Calendar, Award, GraduationCap, Code } from 'lucide-react';
+import { User, MapPin, Award, GraduationCap, Code } from 'lucide-react';
 
 const About = () => {
   const [ref, inView] = useInView({
