@@ -1,5 +1,5 @@
 import express from 'express';
-import { createTransporter } from 'nodemailer';
+import nodemailer from 'nodemailer';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
@@ -36,9 +36,9 @@ app.use(express.urlencoded({ extended: true }));
 // Apply rate limiting to contact route
 app.use('/api/contact', limiter);
 
-// Create nodemailer transporter
+// Create nodemailer transporter - FIXED FUNCTION NAME
 const createEmailTransporter = () => {
-  return createTransporter({
+  return nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,
