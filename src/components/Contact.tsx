@@ -33,9 +33,10 @@ const Contact = () => {
     setErrorMessage('');
 
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      // For Vercel deployment, the API endpoint will be /api/contact
+      const API_URL = import.meta.env.VITE_API_URL || '/api/contact';
       
-      const response = await fetch(`${API_BASE_URL}/api/contact`, {
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
