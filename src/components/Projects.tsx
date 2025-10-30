@@ -175,7 +175,7 @@ const Projects = () => {
           }
         }
       `}</style>
-    </section>
+    </section> 
   );
 };
 
