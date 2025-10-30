@@ -52,7 +52,7 @@ if (name.length > 100 || email.length > 100 || message.length > 2000) {
 }
 
     // Create nodemailer transporter
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
