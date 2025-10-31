@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { User, MapPin, Award, GraduationCap, Code } from 'lucide-react';
+import { getCurrentExperience } from '../utils/experienceCalculator';
 
 const About = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  // Dynamic experience calculation
+  const [experience, setExperience] = useState('');
+
+  useEffect(() => {
+    // Calculate experience immediately when component mounts
+    setExperience(getCurrentExperience());
+    
+    // Update experience every hour to catch month changes
+    const intervalId = setInterval(() => {
+      setExperience(getCurrentExperience());
+    }, 3600000); // 1 hour in milliseconds
+    
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -111,7 +128,9 @@ const About = () => {
                 >
                   <Award className="w-6 h-6 text-blue-400 mx-auto mb-3" />
                   <p className="text-sm text-gray-400 mb-1">Experience</p>
-                  <p className="text-white font-medium">10 Months</p>
+                  <p className="text-white font-medium">
+                    {experience || 'Calculating...'}
+                  </p>
                 </motion.div>
 
                 <motion.div
