@@ -1,20 +1,31 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, ExternalLink } from 'lucide-react';
 
-const Experience = () => {
+interface ExperienceItem {
+  title: string;
+  company: string;
+  location: string;
+  period: string;
+  description: string[];
+  technologies: string[];
+  isCurrentRole?: boolean;
+}
+
+const Experience: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const experiences = [
+  const experiences: ExperienceItem[] = [
     {
       title: 'Software Developer',
       company: 'Cybmirror Innovations LLP',
       location: 'Kochi, Kerala',
       period: 'September 2025 – Present',
+      isCurrentRole: true,
       description: [
         'Develop and maintain web applications with focus on clean, scalable, and efficient code',
         'Work on API integration, database management, and front-end responsiveness',
@@ -95,58 +106,108 @@ const Experience = () => {
             <div className="space-y-12">
               {experiences.map((exp, index) => (
                 <motion.div
-                  key={index}
+                  key={`${exp.company}-${index}`}
                   variants={itemVariants}
                   whileHover={{ scale: 1.02 }}
-                  className="relative"
+                  className="relative group"
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-6 w-4 h-4 bg-blue-400 rounded-full border-4 border-slate-900 hidden md:block"></div>
+                  <div className="absolute left-6 w-4 h-4 bg-blue-400 rounded-full border-4 border-slate-900 hidden md:block group-hover:bg-purple-400 transition-colors duration-300">
+                    {exp.isCurrentRole && (
+                      <div className="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-75"></div>
+                    )}
+                  </div>
                   
-                  <div className="md:ml-20 bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-1">
-                          {exp.title}
-                        </h3>
-                        <p className="text-blue-400 font-medium">{exp.company}</p>
+                  <div className="md:ml-20 bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 hover:border-blue-400/40 hover:bg-slate-800/70 transition-all duration-300">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
+                      <div className="flex-1">
+                        <div className="flex items-center space-x-2 mb-2">
+                          <Briefcase className="w-5 h-5 text-blue-400" />
+                          <h3 className="text-xl font-semibold text-white">
+                            {exp.title}
+                          </h3>
+                          {exp.isCurrentRole && (
+                            <span className="px-2 py-1 bg-green-500/20 text-green-400 text-xs font-medium rounded-full border border-green-500/30">
+                              Current
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-blue-400 font-medium text-lg mb-3">
+                          {exp.company}
+                        </p>
                       </div>
-                      <div className="flex flex-col md:items-end mt-2 md:mt-0">
+                      
+                      <div className="flex flex-col md:items-end space-y-2">
                         <div className="flex items-center space-x-2 text-gray-400 text-sm">
-                          <Calendar size={16} />
+                          <Calendar className="w-4 h-4" />
                           <span>{exp.period}</span>
                         </div>
-                        <div className="flex items-center space-x-2 text-gray-400 text-sm mt-1">
-                          <MapPin size={16} />
+                        <div className="flex items-center space-x-2 text-gray-400 text-sm">
+                          <MapPin className="w-4 h-4" />
                           <span>{exp.location}</span>
                         </div>
                       </div>
                     </div>
 
-                    <ul className="space-y-2 mb-6">
-                      {exp.description.map((item, i) => (
-                        <li key={i} className="text-gray-300 flex items-start">
-                          <span className="text-blue-400 mr-2 mt-2">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Job Description */}
+                    <div className="mb-6">
+                      <ul className="space-y-3">
+                        {exp.description.map((item, i) => (
+                          <li key={i} className="text-gray-300 flex items-start leading-relaxed">
+                            <span className="text-blue-400 mr-3 mt-2 flex-shrink-0">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm border border-blue-500/30"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                    {/* Technologies */}
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">
+                        Technologies & Skills
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech) => (
+                          <motion.span
+                            key={tech}
+                            whileHover={{ scale: 1.05 }}
+                            className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm border border-blue-500/30 hover:bg-blue-500/30 hover:border-blue-400/50 transition-all duration-200 cursor-default"
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
               ))}
             </div>
           </div>
+
+          {/* Call to Action */}
+          <motion.div
+            variants={itemVariants}
+            className="text-center mt-12"
+          >
+            <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl p-8 border border-blue-500/20">
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Ready to Work Together?
+              </h3>
+              <p className="text-gray-300 mb-6">
+                I'm always interested in new opportunities and exciting projects.
+                Let's discuss how we can create something amazing together.
+              </p>
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                <span>Get in Touch</span>
+                <ExternalLink className="w-4 h-4" />
+              </motion.a>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
