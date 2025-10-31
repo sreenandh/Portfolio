@@ -17,7 +17,10 @@ function App() {
       <ParticleBackground />
       <Header />
       <main>
-        <Hero />
+        {/* Home section - Hero component should have id="home" */}
+        <div id="home">
+          <Hero />
+        </div>
         <About />
         <Skills />
         <Experience />
