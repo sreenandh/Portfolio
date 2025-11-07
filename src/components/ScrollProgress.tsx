@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 
 const ScrollProgress: React.FC = () => {
   const { scrollYProgress } = useScroll();
@@ -10,14 +10,23 @@ const ScrollProgress: React.FC = () => {
   });
 
   const [isVisible, setIsVisible] = useState(false);
+  const [scrollPercentage, setScrollPercentage] = useState(0);
 
+  // Update scroll percentage in real-time
   useEffect(() => {
-    const handleScroll = () => {
-      setIsVisible(window.scrollY > 100);
+    const updateScrollPercentage = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percentage = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0;
+      setScrollPercentage(percentage);
+      setIsVisible(scrollTop > 100);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', updateScrollPercentage);
+    // Initial calculation
+    updateScrollPercentage();
+    
+    return () => window.removeEventListener('scroll', updateScrollPercentage);
   }, []);
 
   return (
@@ -37,9 +46,10 @@ const ScrollProgress: React.FC = () => {
         }}
         transition={{ duration: 0.3 }}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 group"
-        whileHover={{ y: -5 }}
+        className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl hover:scale-110 transition-all duration-300 group"
+        whileHover={{ y: -8 }}
         whileTap={{ scale: 0.9 }}
+        aria-label="Scroll to top"
       >
         <svg
           className="w-6 h-6 text-white group-hover:animate-bounce"
@@ -59,16 +69,24 @@ const ScrollProgress: React.FC = () => {
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300" />
       </motion.button>
 
-      {/* Scroll Percentage Indicator */}
+      {/* Scroll Percentage Indicator - Fixed and Enhanced */}
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="fixed bottom-24 right-8 z-50 bg-slate-800/90 backdrop-blur-sm border border-blue-500/30 rounded-full px-4 py-2 text-sm font-medium text-blue-400 shadow-lg"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.3, type: 'spring' }}
+          className="fixed bottom-28 right-8 z-50 bg-slate-800/90 backdrop-blur-md border-2 border-blue-500/40 rounded-2xl px-5 py-3 shadow-xl shadow-blue-500/20"
         >
-          <motion.span style={{ opacity: scrollYProgress }}>
-            {Math.round(scrollYProgress.get() * 100)}%
-          </motion.span>
+          <motion.div 
+            className="flex items-center justify-center"
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <span className="text-base font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              {scrollPercentage}%
+            </span>
+          </motion.div>
         </motion.div>
       )}
     </>
