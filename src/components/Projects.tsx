@@ -1,22 +1,32 @@
 import React from 'react';
 import { ExternalLink, Github, Zap } from 'lucide-react';
 
-const Projects = () => {
-  const projects = [
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  github: string;
+  live: string;
+  featured: boolean;
+}
+
+const Projects: React.FC = () => {
+  const projects: Project[] = [
     {
       title: 'Harbourway Shipping',
-      description: 'Enterprise-grade international shipping platform with AI-powered warehouse management system. Features global network spanning 120+ countries, real-time cargo tracking, DGFT licensing integration, and intelligent demand prediction algorithms.',
+      description: 'Professional corporate website for international shipping company with custom admin dashboard for content management. Clean, responsive design showcasing services, global reach, and company information.',
       image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=600&q=80',
-      technologies: ['Next.js', 'React', 'AI/ML', 'Node.js', 'MongoDB', 'Real-time Tracking'],
+      technologies: ['Next.js', 'React', 'Tailwind CSS', 'Admin Dashboard'],
       github: '#',
       live: 'https://harbourwayshipping.com',
       featured: true
     },
     {
       title: 'Param Yogi School of Yoga',
-      description: 'Production-grade educational website built with Next.js 13+ featuring automated content workflow, role-based admin dashboard, and real-time database synchronization. Reduced storage overhead by 40% with Supabase integration.',
+      description: 'Professional educational website for yoga school featuring course information, class schedules, and instructor profiles. Includes custom admin dashboard for easy content updates and management.',
       image: 'https://images.unsplash.com/photo-1588286840104-8957b019727f?w=600&q=80',
-      technologies: ['Next.js', 'React', 'Supabase', 'Tailwind CSS', 'JWT', 'reCAPTCHA'],
+      technologies: ['Next.js', 'React', 'Tailwind CSS', 'Admin Dashboard'],
       github: '#',
       live: 'https://paramyogi.com',
       featured: true
@@ -163,7 +173,7 @@ const Projects = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;
