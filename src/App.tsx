@@ -10,26 +10,28 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ParticleBackground from './components/ParticleBackground';
+import PageTransition from './components/PageTransition';
+import ScrollProgress from './components/ScrollProgress';
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-x-hidden">
-      <ParticleBackground />
-      <Header />
-      <main>
-        {/* Home section - Hero component should have id="home" */}
-        <div id="home">
+    <PageTransition>
+      <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-x-hidden">
+        <ParticleBackground />
+        <ScrollProgress />
+        <Header />
+        <main>
           <Hero />
-        </div>
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Education />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Education />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </PageTransition>
   );
 }
 
