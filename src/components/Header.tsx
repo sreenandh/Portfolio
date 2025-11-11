@@ -109,8 +109,8 @@ const Header: React.FC = () => {
             : 'bg-transparent'
         }`}
       >
-        <nav className="container mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between">
+        <nav className="w-full px-4 sm:px-6 lg:px-8 py-4">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
