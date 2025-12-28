@@ -21,6 +21,41 @@ const Projects: React.FC = () => {
 
   const projects: Project[] = [
     {
+      title: "Industrial Motor CRM & Quotation System",
+      description:
+        "A comprehensive CRM for an industrial motor company with multi-brand quotation workflows, dynamic PDF generation with brand theming, and multi-currency support. Reduced quotation time from 15+ minutes to under 3 minutes.",
+      image:
+        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
+      technologies: [
+        "React",
+        "TypeScript",
+        "Node.js",
+        "Express.js",
+        "MySQL",
+        "JWT",
+      ],
+      github: "#",
+      live: "#",
+      featured: true,
+    },
+    {
+      title: "Employee Management System API",
+      description:
+        "A scalable RESTful API with 40+ endpoints for attendance tracking, task management, and leave workflows. Features JWT auth, OTP password recovery, and automated email notifications via SMTP.",
+      image:
+        "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80",
+      technologies: [
+        "Node.js",
+        "Express.js",
+        "MySQL",
+        "Prisma ORM",
+        "JWT",
+      ],
+      github: "#",
+      live: "#",
+      featured: true,
+    },
+    {
       title: "Harbourway Shipping",
       description:
         "Built full-stack corporate shipping website with admin CMS and performance-optimized responsive design. Developed dashboard for dynamic content management (galleries, testimonials), implemented automated inquiry handling and email notifications via Node.js, Supabase, and Nodemailer.",
