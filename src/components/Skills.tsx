@@ -81,7 +81,7 @@ const Skills: React.FC = () => {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { 
+      transition: {
         duration: 0.6,
         type: 'spring',
         stiffness: 100
@@ -104,7 +104,7 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-20 relative overflow-hidden">
+    <section id="skills" className="py-24 relative overflow-hidden">
       {/* Animated background elements */}
       <motion.div
         animate={{
@@ -142,7 +142,7 @@ const Skills: React.FC = () => {
               <Sparkles className="w-4 h-4 text-blue-400" />
               <span className="text-blue-300 text-sm font-medium">Technical Expertise</span>
             </motion.div>
-            
+
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Skills & Technologies
@@ -162,8 +162,8 @@ const Skills: React.FC = () => {
               <motion.div
                 key={category.title}
                 variants={cardVariants}
-                whileHover={{ 
-                  y: -10, 
+                whileHover={{
+                  y: -10,
                   scale: 1.03,
                   rotateY: 5,
                   transition: { duration: 0.3 }
@@ -175,10 +175,10 @@ const Skills: React.FC = () => {
               >
                 {/* Glow effect on hover */}
                 <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-300`} />
-                
+
                 {/* Icon with rotation animation */}
                 <motion.div
-                  whileHover={{ rotate: 360, scale: 1.2 }}
+                  whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                   className="flex items-center justify-center mb-4 relative z-10"
                 >
@@ -186,11 +186,11 @@ const Skills: React.FC = () => {
                     {category.icon}
                   </div>
                 </motion.div>
-                
+
                 <h3 className="text-xl font-semibold mb-6 text-center text-white relative z-10">
                   {category.title}
                 </h3>
-                
+
                 <div className="flex flex-wrap gap-2 justify-center relative z-10">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.span
@@ -203,7 +203,7 @@ const Skills: React.FC = () => {
                         type: 'spring',
                         stiffness: 200
                       }}
-                      whileHover={{ 
+                      whileHover={{
                         scale: 1.15,
                         rotate: [-2, 2, -2, 0],
                         transition: { duration: 0.3 }
@@ -231,12 +231,12 @@ const Skills: React.FC = () => {
                 Other Skills & Concepts
               </h3>
             </motion.div>
-            
+
             <div className="flex flex-wrap gap-3 justify-center max-w-5xl mx-auto">
               {otherSkills.map((skill, index) => {
                 const row = Math.floor(index / 5);
                 const col = index % 5;
-                
+
                 return (
                   <motion.span
                     key={skill}
@@ -248,7 +248,7 @@ const Skills: React.FC = () => {
                       type: 'spring',
                       stiffness: 150
                     }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.1,
                       rotate: [0, -3, 3, 0],
                       y: -5,
@@ -275,7 +275,7 @@ const Skills: React.FC = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="mt-16 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl p-8 border border-blue-500/20 backdrop-blur-sm"
+            className="mt-16 bg-blue-500/10 rounded-2xl p-8 border border-blue-500/20 backdrop-blur-sm"
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[

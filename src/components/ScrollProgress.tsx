@@ -25,7 +25,7 @@ const ScrollProgress: React.FC = () => {
     window.addEventListener('scroll', updateScrollPercentage);
     // Initial calculation
     updateScrollPercentage();
-    
+
     return () => window.removeEventListener('scroll', updateScrollPercentage);
   }, []);
 
@@ -33,7 +33,7 @@ const ScrollProgress: React.FC = () => {
     <>
       {/* Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 origin-left z-[60]"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 origin-left z-[60]"
         style={{ scaleX }}
       />
 
@@ -64,7 +64,7 @@ const ScrollProgress: React.FC = () => {
             d="M5 10l7-7m0 0l7 7m-7-7v18"
           />
         </svg>
-        
+
         {/* Pulse effect */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300" />
       </motion.button>
@@ -78,7 +78,7 @@ const ScrollProgress: React.FC = () => {
           transition={{ duration: 0.3, type: 'spring' }}
           className="fixed bottom-28 right-8 z-50 bg-slate-800/90 backdrop-blur-md border-2 border-blue-500/40 rounded-2xl px-5 py-3 shadow-xl shadow-blue-500/20"
         >
-          <motion.div 
+          <motion.div
             className="flex items-center justify-center"
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity }}

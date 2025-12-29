@@ -18,17 +18,17 @@ const Header: React.FC = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 50);
-      
+
       // Auto-highlight current section
       const sections = ['home', 'about', 'skills', 'experience', 'projects', 'education', 'contact'];
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
           const sectionTop = rect.top + scrollPosition;
           const sectionHeight = rect.height;
-          
+
           if (scrollPosition >= sectionTop - 200 && scrollPosition < sectionTop + sectionHeight - 200) {
             setActiveSection(section);
             break;
@@ -36,7 +36,7 @@ const Header: React.FC = () => {
         }
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check initial state
     return () => window.removeEventListener('scroll', handleScroll);
@@ -50,7 +50,7 @@ const Header: React.FC = () => {
         setIsMenuOpen(false);
       }
     };
-    
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isMenuOpen]);
@@ -62,7 +62,7 @@ const Header: React.FC = () => {
     } else {
       document.body.style.overflow = 'unset';
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -81,18 +81,18 @@ const Header: React.FC = () => {
   const scrollToSection = (href: string) => {
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
-    
+
     if (element) {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
       });
     }
-    
+
     setIsMenuOpen(false);
     setActiveSection(targetId);
   };
@@ -103,11 +103,10 @@ const Header: React.FC = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
             ? 'bg-slate-900/95 backdrop-blur-xl border-b border-blue-500/30 shadow-2xl'
             : 'bg-transparent'
-        }`}
+          }`}
       >
         <nav className="w-full px-4 sm:px-6 lg:px-8 py-4">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -122,14 +121,14 @@ const Header: React.FC = () => {
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                  className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 flex items-center justify-center"
+                  className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center"
                 >
                   <Code2 className="w-5 h-5 text-white" />
                 </motion.div>
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 blur-lg opacity-30 animate-pulse"></div>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 blur-lg opacity-20"></div>
               </div>
               <div className="hidden sm:block">
-                <span className="text-xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                <span className="text-xl font-bold text-white">
                   Sreenandh M
                 </span>
                 <p className="text-xs text-gray-400 -mt-1">Full Stack Developer</p>
@@ -146,19 +145,17 @@ const Header: React.FC = () => {
                     onClick={() => scrollToSection(item.href)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`relative px-4 py-2 rounded-xl transition-all duration-300 font-medium text-sm flex items-center space-x-2 group ${
-                      isActive
+                    className={`relative px-4 py-2 rounded-xl transition-all duration-300 font-medium text-sm flex items-center space-x-2 group ${isActive
                         ? 'text-white bg-blue-500/20 border border-blue-400/30'
                         : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
-                    }`}
+                      }`}
                   >
-                    <span className={`transition-colors ${
-                      isActive ? 'text-blue-400' : 'text-gray-400 group-hover:text-blue-400'
-                    }`}>
+                    <span className={`transition-colors ${isActive ? 'text-blue-400' : 'text-gray-400 group-hover:text-blue-400'
+                      }`}>
                       {item.icon}
                     </span>
                     <span>{item.label}</span>
-                    
+
                     {/* Active indicator */}
                     {isActive && (
                       <motion.div
@@ -223,7 +220,7 @@ const Header: React.FC = () => {
               className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
               onClick={() => setIsMenuOpen(false)}
             />
-            
+
             {/* Mobile Menu */}
             <motion.div
               initial={{ x: '100%', opacity: 0 }}
@@ -257,15 +254,13 @@ const Header: React.FC = () => {
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: index * 0.1 }}
                         onClick={() => scrollToSection(item.href)}
-                        className={`w-full flex items-center space-x-4 px-6 py-4 text-left transition-all duration-200 ${
-                          isActive
+                        className={`w-full flex items-center space-x-4 px-6 py-4 text-left transition-all duration-200 ${isActive
                             ? 'text-white bg-blue-500/10 border-r-2 border-blue-400'
                             : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
-                        }`}
+                          }`}
                       >
-                        <span className={`${
-                          isActive ? 'text-blue-400' : 'text-gray-400'
-                        }`}>
+                        <span className={`${isActive ? 'text-blue-400' : 'text-gray-400'
+                          }`}>
                           {item.icon}
                         </span>
                         <span className="font-medium">{item.label}</span>

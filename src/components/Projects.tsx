@@ -188,7 +188,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden">
+    <section id="projects" className="py-28 relative overflow-hidden">
       {/* Animated background elements */}
       <motion.div
         animate={{
@@ -226,7 +226,7 @@ const Projects: React.FC = () => {
               initial={{ scale: 0 }}
               animate={inView ? { scale: 1 } : { scale: 0 }}
               transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-full px-6 py-2 mb-6"
+              className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-6 py-2 mb-6"
             >
               <Zap className="w-4 h-4 text-purple-400" />
               <span className="text-purple-300 text-sm font-medium">
@@ -235,7 +235,7 @@ const Projects: React.FC = () => {
             </motion.div>
 
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="text-white">
                 Featured Projects
               </span>
             </h2>
@@ -247,7 +247,7 @@ const Projects: React.FC = () => {
               initial={{ scaleX: 0 }}
               animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-32 h-1.5 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mx-auto rounded-full"
+              className="w-32 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"
             />
           </motion.div>
 
@@ -291,7 +291,7 @@ const Projects: React.FC = () => {
                 )}
 
                 {/* Glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 transition-all duration-500 pointer-events-none" />
+                <div className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/5 transition-all duration-500 pointer-events-none" />
 
                 {/* Image Section with parallax */}
                 <div className="relative overflow-hidden h-64 bg-slate-900">

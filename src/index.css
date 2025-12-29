@@ -11,7 +11,7 @@
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
   }
-  
+
   body {
     @apply antialiased;
     overflow-x: hidden;
@@ -20,43 +20,42 @@
 
 /* Custom utility classes */
 @layer utilities {
+
   /* Text gradients */
   .text-gradient-blue-purple {
     @apply bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent;
   }
-  
+
   .text-gradient-animate {
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
-    background-size: 300% 100%;
+    background: linear-gradient(90deg, #60a5fa, #38bdf8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: gradientShift 3s ease infinite;
   }
-  
+
   /* Glass effect */
   .glass-effect {
     @apply bg-white/5 backdrop-blur-md border border-white/10;
   }
-  
+
   /* Hover lift effect */
   .hover-lift {
     @apply transition-all duration-300;
   }
-  
+
   .hover-lift:hover {
-    @apply -translate-y-2 shadow-2xl;
+    @apply -translate-y-1 shadow-xl;
   }
-  
+
   /* 3D transform utilities */
   .perspective-1000 {
     perspective: 1000px;
   }
-  
+
   .preserve-3d {
     transform-style: preserve-3d;
   }
-  
+
   /* Smooth transitions */
   .transition-smooth {
     @apply transition-all duration-300 ease-out;
@@ -104,6 +103,7 @@
 
 /* Reduced motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -111,7 +111,7 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   html {
     scroll-behavior: auto;
   }

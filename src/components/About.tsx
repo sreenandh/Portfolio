@@ -22,7 +22,7 @@ const About: React.FC = () => {
       console.warn('Failed to calculate experience:', error);
       setExperience('15+ Months'); // Fallback
     }
-    
+
     // Update experience every hour to catch month changes
     const intervalId = setInterval(() => {
       try {
@@ -32,7 +32,7 @@ const About: React.FC = () => {
         console.warn('Failed to update experience:', error);
       }
     }, 3600000); // 1 hour in milliseconds
-    
+
     // Cleanup interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
@@ -57,7 +57,7 @@ const About: React.FC = () => {
   };
 
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-24 relative">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -106,17 +106,17 @@ const About: React.FC = () => {
                 </div>
                 <div className="space-y-4 text-gray-300 leading-relaxed">
                   <p>
-                    Hi, I'm <span className="text-blue-400 font-semibold">Sreenandh M</span>, a passionate Full Stack Developer 
-                    with expertise in modern web technologies. I recently graduated with a B.Tech in Computer Science and Engineering 
+                    Hi, I'm <span className="text-blue-400 font-semibold">Sreenandh M</span>, a passionate Full Stack Developer
+                    with expertise in modern web technologies. I recently graduated with a B.Tech in Computer Science and Engineering
                     from Vimal Jyothi Engineering College, and I'm excited to build scalable applications that solve real-world problems.
                   </p>
                   <p>
-                    With hands-on experience in the MERN stack and cloud technologies, I've contributed to projects ranging from 
-                    cloud-native banking platforms to AI-powered fitness applications. I love learning new technologies and 
+                    With hands-on experience in the MERN stack and cloud technologies, I've contributed to projects ranging from
+                    cloud-native banking platforms to AI-powered fitness applications. I love learning new technologies and
                     taking on challenging projects that push the boundaries of what's possible.
                   </p>
                   <p>
-                    I'm passionate about creating exceptional user experiences and writing clean, maintainable code. 
+                    I'm passionate about creating exceptional user experiences and writing clean, maintainable code.
                     Currently based in Kerala, India, and open to exciting opportunities worldwide.
                   </p>
                 </div>
@@ -187,7 +187,7 @@ const About: React.FC = () => {
               </div>
 
               {/* Achievements Highlights */}
-              <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl p-6 backdrop-blur-sm border border-purple-500/20">
+              <div className="bg-blue-500/10 rounded-2xl p-6 backdrop-blur-sm border border-blue-500/20">
                 <h4 className="text-xl font-semibold mb-4 text-center text-white">Recent Highlights</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                   <div className="flex items-center space-x-3">

@@ -12,6 +12,7 @@ import {
   Rocket,
   Terminal,
   Layers,
+  FileDown,
 } from "lucide-react";
 
 const Hero: React.FC = () => {
@@ -24,9 +25,9 @@ const Hero: React.FC = () => {
 
   const roles = [
     "Full Stack Developer",
-    "Software Engineer",
+    "Building Web Applications",
+    "Eager Learner",
     "Problem Solver",
-    "Tech Enthusiast",
   ];
 
   // Mouse parallax effect
@@ -105,7 +106,7 @@ const Hero: React.FC = () => {
             scale: [1, 0.8, 1.3, 1],
           }}
           transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-10 right-10 w-[600px] h-[600px] bg-gradient-to-l from-purple-500/30 via-pink-500/20 to-transparent rounded-full blur-3xl"
+          className="absolute bottom-10 right-10 w-[600px] h-[600px] bg-gradient-to-l from-slate-500/20 via-blue-500/10 to-transparent rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -174,7 +175,7 @@ const Hero: React.FC = () => {
             x: mousePosition.x * 1.2,
             y: mousePosition.y * 1.2,
           }}
-          className="absolute bottom-1/4 right-1/4 text-pink-400/10 hidden md:block"
+          className="absolute bottom-1/4 right-1/4 text-cyan-400/10 hidden md:block"
         >
           <Sparkles size={60} strokeWidth={1.5} />
         </motion.div>
@@ -220,7 +221,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 border border-blue-500/30 rounded-full px-6 py-2.5 mb-8 backdrop-blur-sm"
+            className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-6 py-2.5 mb-8 backdrop-blur-sm"
           >
             <motion.div
               animate={{
@@ -248,7 +249,7 @@ const Hero: React.FC = () => {
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
               transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              className="bg-gradient-to-r from-blue-400 via-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent bg-[length:200%_auto] drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]"
+              className="text-white drop-shadow-[0_0_30px_rgba(59,130,246,0.2)]"
               style={{
                 backgroundSize: "200% auto",
               }}
@@ -261,7 +262,7 @@ const Hero: React.FC = () => {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto mt-6 rounded-full origin-center shadow-[0_0_20px_rgba(139,92,246,0.5)]"
+              className="h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mt-6 rounded-full origin-center"
               style={{ width: "60%" }}
             />
           </motion.h1>
@@ -292,10 +293,9 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="text-base sm:text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed px-4"
           >
-            Full Stack Developer experienced in building end-to-end web
-            applications, managing both user-facing interfaces and backend
-            systems. Focused on clean architecture, maintainable code, and
-            delivering reliable, production-ready solutions.
+            Entry-level developer building full-stack web applications with
+            React, Node.js, and modern tools. Focused on writing clean code,
+            learning best practices, and shipping reliable solutions.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -309,7 +309,7 @@ const Hero: React.FC = () => {
               href="mailto:sreenandhnandhu123@gmail.com"
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 px-8 py-4 rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(139,92,246,0.3)] hover:shadow-[0_0_40px_rgba(139,92,246,0.5)] overflow-hidden"
+              className="group relative flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               <Mail size={20} className="relative z-10" />
@@ -333,6 +333,20 @@ const Hero: React.FC = () => {
                 size={16}
                 className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
               />
+            </motion.a>
+
+            <motion.a
+              href="/resume.pdf"
+              download="Sreenandh_M_Resume.pdf"
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              className="group flex items-center justify-center space-x-2 border-2 border-gray-600 hover:border-green-400 bg-slate-900/50 backdrop-blur-sm px-8 py-4 rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-green-500/10 hover:to-emerald-500/10 shadow-lg hover:shadow-[0_0_30px_rgba(34,197,94,0.3)]"
+            >
+              <FileDown
+                size={20}
+                className="group-hover:translate-y-1 transition-transform duration-300"
+              />
+              <span className="font-medium">Download CV</span>
             </motion.a>
           </motion.div>
 
@@ -366,7 +380,7 @@ const Hero: React.FC = () => {
                 icon: Phone,
                 href: "tel:+917012434020",
                 label: "Phone",
-                color: "from-pink-400 to-pink-600",
+                color: "from-cyan-400 to-cyan-600",
               },
             ].map((social, index) => (
               <motion.a
@@ -385,7 +399,7 @@ const Hero: React.FC = () => {
                   type: "spring",
                   stiffness: 200,
                 }}
-                whileHover={{ scale: 1.3, rotate: 360, y: -5 }}
+                whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.9 }}
                 className={`w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-slate-800/50 border border-slate-700/50 text-gray-400 hover:text-white hover:bg-gradient-to-r hover:${social.color} hover:border-transparent transition-all duration-300 group relative`}
                 aria-label={social.label}

@@ -59,7 +59,7 @@ const Education = () => {
       date: '2024',
       description: 'Understanding large language models and their capabilities',
       link: 'https://www.coursera.org/account/accomplishments/verify/KU5RYTM6K46K',
-      color: 'from-pink-500 to-rose-500'
+      color: 'from-cyan-500 to-teal-500'
     },
     {
       title: 'Introduction to Responsible AI',
@@ -123,13 +123,13 @@ const Education = () => {
     <section id="education" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
+        <motion.div
           variants={floatVariants}
           initial="initial"
           animate="animate"
           className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl"
         />
-        <motion.div 
+        <motion.div
           variants={floatVariants}
           initial="initial"
           animate="animate"
@@ -159,18 +159,18 @@ const Education = () => {
               </div>
             </motion.div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="text-white">
                 Education & Achievements
               </span>
             </h2>
             <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto">
               A journey of continuous learning and professional growth
             </p>
-            <motion.div 
+            <motion.div
               initial={{ width: 0 }}
               animate={inView ? { width: "6rem" } : { width: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mx-auto rounded-full mt-4"
+              className="h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full mt-4"
             />
           </motion.div>
 
@@ -183,7 +183,7 @@ const Education = () => {
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white">Education</h3>
               </div>
-              
+
               {education.map((edu, index) => (
                 <motion.div
                   key={index}
@@ -224,12 +224,12 @@ const Education = () => {
             {/* Certifications Section */}
             <motion.div variants={itemVariants}>
               <div className="flex items-center gap-3 mb-6 sm:mb-8">
-                <div className="p-2 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg">
+                <div className="p-2 bg-blue-500/20 rounded-lg">
                   <Award className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white">Certifications</h3>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {certifications.map((cert, index) => (
                   <motion.div
@@ -244,9 +244,9 @@ const Education = () => {
                         <div className="flex-1">
                           <h4 className="text-base sm:text-lg font-bold text-white mb-2 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-400 group-hover:to-purple-400 transition-all">
                             {cert.link ? (
-                              <a 
-                                href={cert.link} 
-                                target="_blank" 
+                              <a
+                                href={cert.link}
+                                target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 hover:gap-3 transition-all"
                               >
@@ -282,7 +282,7 @@ const Education = () => {
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white">Achievements</h3>
               </div>
-              
+
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 {achievements.map((achievement, index) => {
                   const Icon = achievement.icon;
@@ -302,9 +302,9 @@ const Education = () => {
                           <div className="flex-1">
                             <h4 className="text-base sm:text-lg font-bold text-white mb-2 leading-tight">
                               {achievement.link ? (
-                                <a 
-                                  href={achievement.link} 
-                                  target="_blank" 
+                                <a
+                                  href={achievement.link}
+                                  target="_blank"
                                   rel="noopener noreferrer"
                                   className="inline-flex items-center gap-2 hover:gap-3 hover:text-yellow-400 transition-all"
                                 >

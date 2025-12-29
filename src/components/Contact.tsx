@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
 
     try {
       const API_URL = import.meta.env.VITE_API_URL || '/api/contact';
-      
+
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
@@ -86,7 +86,7 @@ const Contact: React.FC = () => {
       label: 'Location',
       value: 'Kerala, India',
       href: '#',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-cyan-500 to-teal-500'
     }
   ];
 
@@ -128,7 +128,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
+    <section id="contact" className="py-24 relative overflow-hidden">
       {/* Animated background */}
       <motion.div
         animate={{
@@ -202,7 +202,7 @@ const Contact: React.FC = () => {
                       className="group flex items-center space-x-4 p-4 bg-slate-800/40 backdrop-blur-sm rounded-xl border border-blue-500/10 hover:border-blue-400/30 hover:bg-slate-800/60 transition-all duration-300 cursor-pointer"
                     >
                       <motion.div
-                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.6 }}
                         className={`w-12 h-12 bg-gradient-to-r ${info.color} rounded-full flex items-center justify-center shadow-lg`}
                       >
@@ -239,7 +239,7 @@ const Contact: React.FC = () => {
                       initial={{ opacity: 0, scale: 0 }}
                       animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
                       transition={{ delay: 1 + index * 0.1, type: 'spring', stiffness: 200 }}
-                      whileHover={{ scale: 1.15, rotate: 360 }}
+                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.9 }}
                       className="w-14 h-14 bg-slate-800/50 backdrop-blur-sm rounded-xl flex items-center justify-center border border-blue-500/20 hover:border-blue-400/40 hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-purple-500/20 transition-all duration-300 group"
                       aria-label={social.label}
@@ -253,8 +253,8 @@ const Contact: React.FC = () => {
 
             {/* Contact Form - 3 columns */}
             <motion.div variants={itemVariants} className="lg:col-span-3">
-              <motion.form 
-                onSubmit={handleSubmit} 
+              <motion.form
+                onSubmit={handleSubmit}
                 className="space-y-6 bg-slate-800/40 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
@@ -394,7 +394,7 @@ const Contact: React.FC = () => {
                     transition={{ duration: 0.6 }}
                     style={{ opacity: 0.2 }}
                   />
-                  
+
                   {isSubmitting ? (
                     <>
                       <motion.div

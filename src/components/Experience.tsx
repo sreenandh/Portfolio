@@ -81,7 +81,7 @@ const Experience: React.FC = () => {
   };
 
   return (
-    <section id="experience" className="py-20 relative">
+    <section id="experience" className="py-24 relative">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -117,7 +117,7 @@ const Experience: React.FC = () => {
                       <div className="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-75"></div>
                     )}
                   </div>
-                  
+
                   <div className="md:ml-20 bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20 hover:border-blue-400/40 hover:bg-slate-800/70 transition-all duration-300">
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
                       <div className="flex-1">
@@ -136,7 +136,7 @@ const Experience: React.FC = () => {
                           {exp.company}
                         </p>
                       </div>
-                      
+
                       <div className="flex flex-col md:items-end space-y-2">
                         <div className="flex items-center space-x-2 text-gray-400 text-sm">
                           <Calendar className="w-4 h-4" />
