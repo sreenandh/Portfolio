@@ -1,7 +1,8 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Server, Database, Wrench, Zap, Brain, Sparkles } from 'lucide-react';
+import AnimatedCounter from './AnimatedCounter';
 
 interface SkillCategory {
   title: string;
@@ -15,10 +16,6 @@ const Skills: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const { scrollYProgress } = useScroll();
-  const scale = useTransform(scrollYProgress, [0.2, 0.4], [0.8, 1]);
-  const opacity = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
 
   const skillCategories: SkillCategory[] = [
     {
@@ -109,18 +106,20 @@ const Skills: React.FC = () => {
       <motion.div
         animate={{
           rotate: [0, 360],
-          scale: [1, 1.2, 1],
+          scale: [1, 1.3, 1],
+          x: [0, 30, 0],
         }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-        className="absolute top-20 right-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"
+        transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-20 right-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl"
       />
       <motion.div
         animate={{
           rotate: [360, 0],
-          scale: [1, 1.3, 1],
+          scale: [1, 1.4, 1],
+          x: [0, -30, 0],
         }}
-        transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-        className="absolute bottom-20 left-10 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"
+        transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-20 left-10 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl"
       />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -137,14 +136,14 @@ const Skills: React.FC = () => {
               initial={{ scale: 0 }}
               animate={inView ? { scale: 1 } : { scale: 0 }}
               transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-full px-6 py-2 mb-6"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-full px-6 py-2 mb-6 pulse-glow"
             >
               <Sparkles className="w-4 h-4 text-blue-400" />
               <span className="text-blue-300 text-sm font-medium">Technical Expertise</span>
             </motion.div>
 
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="text-gradient-animate">
                 Skills & Technologies
               </span>
             </h2>
@@ -152,7 +151,7 @@ const Skills: React.FC = () => {
               initial={{ scaleX: 0 }}
               animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"
+              className="w-24 h-1.5 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 mx-auto rounded-full"
             />
           </motion.div>
 
@@ -163,26 +162,26 @@ const Skills: React.FC = () => {
                 key={category.title}
                 variants={cardVariants}
                 whileHover={{
-                  y: -10,
-                  scale: 1.03,
+                  y: -12,
+                  scale: 1.05,
                   rotateY: 5,
                   transition: { duration: 0.3 }
                 }}
-                className="group relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 perspective-1000"
+                className="group relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/20 hover:border-blue-400/50 transition-all duration-300"
                 style={{
                   transformStyle: 'preserve-3d',
                 }}
               >
                 {/* Glow effect on hover */}
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-300`} />
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-15 blur-xl transition-opacity duration-300`} />
 
-                {/* Icon with rotation animation */}
+                {/* Icon with enhanced animation */}
                 <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
+                  whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.5 }}
                   className="flex items-center justify-center mb-4 relative z-10"
                 >
-                  <div className={`p-3 rounded-xl bg-gradient-to-r ${category.color} text-white shadow-lg`}>
+                  <div className={`p-3 rounded-xl bg-gradient-to-r ${category.color} text-white shadow-lg shadow-blue-500/20`}>
                     {category.icon}
                   </div>
                 </motion.div>
@@ -206,9 +205,9 @@ const Skills: React.FC = () => {
                       whileHover={{
                         scale: 1.15,
                         rotate: [-2, 2, -2, 0],
-                        transition: { duration: 0.3 }
+                        boxShadow: '0 0 15px rgba(59, 130, 246, 0.4)',
                       }}
-                      className="px-3 py-1.5 bg-slate-700/50 text-gray-300 rounded-lg text-sm border border-slate-600 hover:border-blue-400/50 hover:text-blue-300 hover:bg-slate-700 transition-all duration-300 cursor-default"
+                      className="px-3 py-1.5 bg-slate-700/50 text-gray-300 rounded-lg text-sm border border-slate-600 hover:border-blue-400/60 hover:text-blue-300 hover:bg-slate-700 transition-all duration-300 cursor-default"
                     >
                       {skill}
                     </motion.span>
@@ -218,7 +217,7 @@ const Skills: React.FC = () => {
             ))}
           </div>
 
-          {/* Other Skills with wave animation */}
+          {/* Other Skills with enhanced wave animation */}
           <motion.div variants={itemVariants} className="text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -250,13 +249,13 @@ const Skills: React.FC = () => {
                     }}
                     whileHover={{
                       scale: 1.1,
+                      y: -8,
                       rotate: [0, -3, 3, 0],
-                      y: -5,
-                      transition: { duration: 0.3 }
+                      boxShadow: '0 10px 30px rgba(139, 92, 246, 0.3)',
                     }}
-                    className="group relative px-5 py-2.5 bg-gradient-to-r from-slate-800 to-slate-700 text-gray-300 rounded-xl text-sm border border-slate-600 hover:border-purple-400/50 hover:text-purple-300 transition-all duration-300 cursor-default shadow-lg hover:shadow-purple-500/25 overflow-hidden"
+                    className="group relative px-5 py-2.5 bg-gradient-to-r from-slate-800 to-slate-700 text-gray-300 rounded-xl text-sm border border-slate-600 hover:border-purple-400/60 hover:text-purple-300 transition-all duration-300 cursor-default shadow-lg hover:shadow-purple-500/25 overflow-hidden"
                   >
-                    {/* Shine effect on hover */}
+                    {/* Shimmer effect on hover */}
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                       initial={{ x: '-100%' }}
@@ -270,12 +269,12 @@ const Skills: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Skill Stats Animation */}
+          {/* Skill Stats with AnimatedCounter */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
-            className="mt-16 bg-blue-500/10 rounded-2xl p-8 border border-blue-500/20 backdrop-blur-sm"
+            transition={{ delay: 1.2, duration: 0.8 }}
+            className="mt-16 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-cyan-500/10 rounded-2xl p-8 border border-blue-500/20 backdrop-blur-sm glass-morphism"
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
@@ -288,25 +287,25 @@ const Skills: React.FC = () => {
                   key={stat.label}
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-                  transition={{ delay: 1.7 + index * 0.1, type: 'spring', stiffness: 200 }}
+                  transition={{ delay: 1.4 + index * 0.1, type: 'spring', stiffness: 200 }}
                   whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
                   className="text-center group cursor-default"
                 >
                   <motion.div
-                    whileHover={{ rotate: 360 }}
+                    whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                    className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mb-3 group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-shadow duration-300"
+                    className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mb-3 group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-shadow duration-300"
                   >
                     <stat.icon className="w-6 h-6 text-white" />
                   </motion.div>
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={inView ? { scale: 1 } : { scale: 0 }}
-                    transition={{ delay: 1.8 + index * 0.1, type: 'spring', stiffness: 300 }}
-                    className="text-3xl font-bold text-white mb-1"
-                  >
-                    {stat.count}+
-                  </motion.div>
+                  <div className="text-3xl font-bold text-white mb-1">
+                    <AnimatedCounter
+                      target={stat.count}
+                      duration={2}
+                      delay={1.5 + index * 0.2}
+                      suffix="+"
+                    />
+                  </div>
                   <div className="text-sm text-gray-400">{stat.label}</div>
                 </motion.div>
               ))}

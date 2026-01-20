@@ -104,8 +104,8 @@ const Header: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-            ? 'bg-slate-900/95 backdrop-blur-xl border-b border-blue-500/30 shadow-2xl'
-            : 'bg-transparent'
+          ? 'bg-slate-900/95 backdrop-blur-xl border-b border-blue-500/30 shadow-2xl'
+          : 'bg-transparent'
           }`}
       >
         <nav className="w-full px-4 sm:px-6 lg:px-8 py-4">
@@ -145,27 +145,44 @@ const Header: React.FC = () => {
                     onClick={() => scrollToSection(item.href)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`relative px-4 py-2 rounded-xl transition-all duration-300 font-medium text-sm flex items-center space-x-2 group ${isActive
-                        ? 'text-white bg-blue-500/20 border border-blue-400/30'
-                        : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
+                    className={`relative px-4 py-2 rounded-xl transition-all duration-300 font-medium text-sm flex items-center space-x-2 group overflow-hidden ${isActive
+                      ? 'text-white bg-blue-500/20 border border-blue-400/30'
+                      : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
                       }`}
                   >
-                    <span className={`transition-colors ${isActive ? 'text-blue-400' : 'text-gray-400 group-hover:text-blue-400'
+                    <span className={`transition-colors duration-300 ${isActive ? 'text-blue-400' : 'text-gray-400 group-hover:text-blue-400'
                       }`}>
                       {item.icon}
                     </span>
                     <span>{item.label}</span>
 
-                    {/* Active indicator */}
+                    {/* Animated underline on hover */}
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400"
+                      initial={{ scaleX: 0, opacity: 0 }}
+                      whileHover={{ scaleX: 1, opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      style={{ originX: 0 }}
+                    />
+
+                    {/* Active indicator dot */}
                     {isActive && (
                       <motion.div
                         layoutId="activeTab"
-                        className="absolute bottom-0 left-1/2 w-1 h-1 bg-blue-400 rounded-full transform -translate-x-1/2"
+                        className="absolute -bottom-1 left-1/2 w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full transform -translate-x-1/2"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                       />
                     )}
+
+                    {/* Shimmer effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
+                      initial={{ x: '-100%' }}
+                      whileHover={{ x: '100%' }}
+                      transition={{ duration: 0.5 }}
+                    />
                   </motion.button>
                 );
               })}
@@ -255,8 +272,8 @@ const Header: React.FC = () => {
                         transition={{ delay: index * 0.1 }}
                         onClick={() => scrollToSection(item.href)}
                         className={`w-full flex items-center space-x-4 px-6 py-4 text-left transition-all duration-200 ${isActive
-                            ? 'text-white bg-blue-500/10 border-r-2 border-blue-400'
-                            : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
+                          ? 'text-white bg-blue-500/10 border-r-2 border-blue-400'
+                          : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
                           }`}
                       >
                         <span className={`${isActive ? 'text-blue-400' : 'text-gray-400'
@@ -269,10 +286,9 @@ const Header: React.FC = () => {
                   })}
                 </div>
 
-                {/* Mobile Menu Footer */}
                 <div className="p-6 border-t border-slate-700/50">
                   <div className="text-center text-sm text-gray-400">
-                    <p>© 2025 Sreenandh M</p>
+                    <p>© {new Date().getFullYear()} Sreenandh M</p>
                     <p className="text-xs mt-1">Full Stack Developer</p>
                   </div>
                 </div>

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  ArrowDown,
   Github,
   Linkedin,
   Mail,
@@ -13,7 +12,10 @@ import {
   Terminal,
   Layers,
   FileDown,
+  Zap,
 } from "lucide-react";
+import MagneticButton from "./MagneticButton";
+import TextReveal from "./TextReveal";
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
@@ -22,6 +24,8 @@ const Hero: React.FC = () => {
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [currentRole, setCurrentRole] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+  const [displayedText, setDisplayedText] = useState("");
 
   const roles = [
     "Full Stack Developer",
@@ -29,6 +33,35 @@ const Hero: React.FC = () => {
     "Eager Learner",
     "Problem Solver",
   ];
+
+  // Typewriter effect
+  useEffect(() => {
+    const currentText = roles[currentRole];
+
+    if (isTyping) {
+      if (displayedText.length < currentText.length) {
+        const timeout = setTimeout(() => {
+          setDisplayedText(currentText.slice(0, displayedText.length + 1));
+        }, 80);
+        return () => clearTimeout(timeout);
+      } else {
+        const timeout = setTimeout(() => {
+          setIsTyping(false);
+        }, 2000);
+        return () => clearTimeout(timeout);
+      }
+    } else {
+      if (displayedText.length > 0) {
+        const timeout = setTimeout(() => {
+          setDisplayedText(displayedText.slice(0, -1));
+        }, 40);
+        return () => clearTimeout(timeout);
+      } else {
+        setCurrentRole((prev) => (prev + 1) % roles.length);
+        setIsTyping(true);
+      }
+    }
+  }, [displayedText, isTyping, currentRole, roles]);
 
   // Mouse parallax effect
   useEffect(() => {
@@ -43,39 +76,63 @@ const Hero: React.FC = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Role rotation animation
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   const scrollToAbout = () => {
     document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Floating icons animation variants
+  // Floating icons with improved physics
   const floatingVariants = {
     animate: (custom: number) => ({
-      y: [-15, 15, -15],
+      y: [-20, 20, -20],
+      x: [-10, 10, -10],
       rotate: [0, 360],
       transition: {
-        y: { duration: 3 + custom, repeat: Infinity, ease: "easeInOut" },
-        rotate: { duration: 20 + custom * 5, repeat: Infinity, ease: "linear" },
+        y: { duration: 4 + custom, repeat: Infinity, ease: "easeInOut" },
+        x: { duration: 5 + custom, repeat: Infinity, ease: "easeInOut", delay: custom * 0.5 },
+        rotate: { duration: 25 + custom * 5, repeat: Infinity, ease: "linear" },
       },
     }),
   };
 
-  // Particle effect
-  const particles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 4 + 2,
-    duration: Math.random() * 20 + 10,
-  }));
+  // Enhanced particle effect
+  const particles = useMemo(() =>
+    Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 4 + 2,
+      duration: Math.random() * 15 + 8,
+      delay: Math.random() * 5,
+    })), []
+  );
+
+  // Social links data
+  const socialLinks = [
+    {
+      icon: Github,
+      href: "https://github.com/sreenandh",
+      label: "GitHub",
+      color: "from-gray-400 to-gray-600",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/sreenandh-m/",
+      label: "LinkedIn",
+      color: "from-blue-400 to-blue-600",
+    },
+    {
+      icon: Mail,
+      href: "mailto:sreenandhnandhu123@gmail.com",
+      label: "Email",
+      color: "from-purple-400 to-purple-600",
+    },
+    {
+      icon: Phone,
+      href: "tel:+917012434020",
+      label: "Phone",
+      color: "from-cyan-400 to-cyan-600",
+    },
+  ];
 
   return (
     <section
@@ -89,60 +146,63 @@ const Hero: React.FC = () => {
 
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Gradient orbs with enhanced blur */}
+        {/* Gradient orbs with enhanced animations */}
         <motion.div
           animate={{
-            x: [0, 150, -50, 0],
-            y: [0, -80, 50, 0],
-            scale: [1, 1.2, 0.8, 1],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-10 left-10 w-[500px] h-[500px] bg-gradient-to-r from-blue-500/30 via-cyan-500/20 to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -120, 80, 0],
-            y: [0, 100, -60, 0],
-            scale: [1, 0.8, 1.3, 1],
-          }}
-          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-10 right-10 w-[600px] h-[600px] bg-gradient-to-l from-slate-500/20 via-blue-500/10 to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, 100, -100, 0],
-            y: [0, -50, 50, 0],
-            scale: [1, 1.1, 0.9, 1],
+            x: [0, 150, -100, 50, 0],
+            y: [0, -100, 80, -50, 0],
+            scale: [1, 1.3, 0.9, 1.1, 1],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-to-br from-indigo-500/20 via-purple-500/10 to-transparent rounded-full blur-3xl"
+          className="absolute top-10 left-10 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/30 via-cyan-500/20 to-transparent rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -150, 100, -50, 0],
+            y: [0, 120, -80, 50, 0],
+            scale: [1, 0.8, 1.4, 1.1, 1],
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-10 right-10 w-[700px] h-[700px] bg-gradient-to-l from-purple-500/20 via-blue-500/15 to-transparent rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, 120, -80, 40, 0],
+            y: [0, -70, 100, -40, 0],
+            scale: [1, 1.2, 0.85, 1.15, 1],
+          }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-indigo-500/15 via-purple-500/10 to-cyan-500/10 rounded-full blur-3xl"
         />
 
         {/* Animated particles */}
         {particles.map((particle) => (
           <motion.div
             key={particle.id}
-            className="absolute rounded-full bg-blue-400/30"
+            className="absolute rounded-full"
             style={{
               left: `${particle.x}%`,
               top: `${particle.y}%`,
               width: particle.size,
               height: particle.size,
+              background: `radial-gradient(circle, rgba(59, 130, 246, 0.6), rgba(139, 92, 246, 0.3))`,
             }}
             animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.8, 0.2],
-              scale: [1, 1.5, 1],
+              y: [0, -50, 0],
+              x: [0, Math.random() * 30 - 15, 0],
+              opacity: [0.2, 0.9, 0.2],
+              scale: [1, 1.8, 1],
             }}
             transition={{
               duration: particle.duration,
               repeat: Infinity,
               ease: "easeInOut",
+              delay: particle.delay,
             }}
           />
         ))}
 
-        {/* Floating tech icons with enhanced animations */}
+        {/* Floating tech icons with improved physics */}
         <motion.div
           custom={0}
           variants={floatingVariants}
@@ -151,9 +211,9 @@ const Hero: React.FC = () => {
             x: mousePosition.x * 2,
             y: mousePosition.y * 2,
           }}
-          className="absolute top-1/4 left-[5%] text-blue-400/10 hidden lg:block"
+          className="absolute top-1/4 left-[5%] text-blue-400/15 hidden lg:block"
         >
-          <Code2 size={80} strokeWidth={1.5} />
+          <Code2 size={90} strokeWidth={1.2} />
         </motion.div>
         <motion.div
           custom={1}
@@ -163,9 +223,9 @@ const Hero: React.FC = () => {
             x: mousePosition.x * -1.5,
             y: mousePosition.y * -1.5,
           }}
-          className="absolute top-1/3 right-[8%] text-purple-400/10 hidden lg:block"
+          className="absolute top-1/3 right-[8%] text-purple-400/15 hidden lg:block"
         >
-          <Rocket size={100} strokeWidth={1.5} />
+          <Rocket size={110} strokeWidth={1.2} />
         </motion.div>
         <motion.div
           custom={2}
@@ -175,9 +235,9 @@ const Hero: React.FC = () => {
             x: mousePosition.x * 1.2,
             y: mousePosition.y * 1.2,
           }}
-          className="absolute bottom-1/4 right-1/4 text-cyan-400/10 hidden md:block"
+          className="absolute bottom-1/4 right-1/4 text-cyan-400/15 hidden md:block"
         >
-          <Sparkles size={60} strokeWidth={1.5} />
+          <Sparkles size={70} strokeWidth={1.2} />
         </motion.div>
         <motion.div
           custom={3}
@@ -187,9 +247,9 @@ const Hero: React.FC = () => {
             x: mousePosition.x * -1,
             y: mousePosition.y * -1,
           }}
-          className="absolute bottom-1/3 left-[15%] text-cyan-400/10 hidden lg:block"
+          className="absolute bottom-1/3 left-[15%] text-cyan-400/15 hidden lg:block"
         >
-          <Terminal size={70} strokeWidth={1.5} />
+          <Terminal size={80} strokeWidth={1.2} />
         </motion.div>
         <motion.div
           custom={4}
@@ -199,9 +259,21 @@ const Hero: React.FC = () => {
             x: mousePosition.x * 1.8,
             y: mousePosition.y * 1.8,
           }}
-          className="absolute top-[60%] right-[15%] text-indigo-400/10 hidden md:block"
+          className="absolute top-[60%] right-[15%] text-indigo-400/15 hidden md:block"
         >
-          <Layers size={65} strokeWidth={1.5} />
+          <Layers size={75} strokeWidth={1.2} />
+        </motion.div>
+        <motion.div
+          custom={5}
+          variants={floatingVariants}
+          animate="animate"
+          style={{
+            x: mousePosition.x * -2,
+            y: mousePosition.y * 1.5,
+          }}
+          className="absolute top-[20%] right-[25%] text-pink-400/10 hidden lg:block"
+        >
+          <Zap size={65} strokeWidth={1.2} />
         </motion.div>
       </div>
 
@@ -216,12 +288,12 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-5xl mx-auto"
         >
-          {/* Greeting badge */}
+          {/* Greeting badge with pulse effect */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-6 py-2.5 mb-8 backdrop-blur-sm"
+            className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-6 py-2.5 mb-8 backdrop-blur-sm pulse-glow"
           >
             <motion.div
               animate={{
@@ -237,56 +309,49 @@ const Hero: React.FC = () => {
             </span>
           </motion.div>
 
-          {/* Name with gradient animation */}
+          {/* Name with staggered letter animation */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 relative px-4"
           >
-            <motion.span
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }}
-              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              className="text-white drop-shadow-[0_0_30px_rgba(59,130,246,0.2)]"
-              style={{
-                backgroundSize: "200% auto",
-              }}
-            >
-              Sreenandh M
-            </motion.span>
+            <TextReveal
+              text="Sreenandh M"
+              className="text-white drop-shadow-[0_0_30px_rgba(59,130,246,0.3)] text-glow"
+              delay={0.5}
+            />
 
-            {/* Animated underline */}
+            {/* Animated underline with gradient */}
             <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-              className="h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mt-6 rounded-full origin-center"
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+              className="h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 mx-auto mt-6 rounded-full origin-center"
               style={{ width: "60%" }}
             />
           </motion.h1>
 
-          {/* Rotating roles */}
+          {/* Typewriter effect for roles */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-8 font-light h-12 sm:h-14 flex items-center justify-center px-4"
           >
-            <motion.span
-              key={currentRole}
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
-              transition={{ duration: 0.5 }}
-              className="inline-block bg-gradient-to-r from-gray-200 to-gray-400 bg-clip-text text-transparent"
-            >
-              {roles[currentRole]}
-            </motion.span>
+            <span className="inline-flex items-center">
+              <span className="text-gradient-animate font-medium">
+                {displayedText}
+              </span>
+              <motion.span
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                className="inline-block w-[3px] h-8 sm:h-10 bg-blue-400 ml-1"
+              />
+            </span>
           </motion.div>
 
-          {/* Description */}
+          {/* Description with fade in */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -298,117 +363,88 @@ const Hero: React.FC = () => {
             learning best practices, and shipping reliable solutions.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons with magnetic effect */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
             className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 md:gap-6 mb-12 px-4"
           >
-            <motion.a
+            <MagneticButton
+              as="a"
               href="mailto:sreenandhnandhu123@gmail.com"
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl overflow-hidden"
+              className="group relative flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/30 overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              <Mail size={20} className="relative z-10" />
-              <span className="relative z-10 font-medium">Get In Touch</span>
-            </motion.a>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/25 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <Mail size={20} className="relative z-10 text-white" />
+              <span className="relative z-10 font-medium text-white">Get In Touch</span>
+            </MagneticButton>
 
-            <motion.a
+            <MagneticButton
+              as="a"
               href="https://github.com/sreenandh"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
               className="group flex items-center justify-center space-x-2 border-2 border-gray-600 hover:border-blue-400 bg-slate-900/50 backdrop-blur-sm px-8 py-4 rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
             >
               <Github
                 size={20}
-                className="group-hover:rotate-12 transition-transform duration-300"
+                className="group-hover:rotate-12 transition-transform duration-300 text-white"
               />
-              <span className="font-medium">View Work</span>
+              <span className="font-medium text-white">View Work</span>
               <ExternalLink
                 size={16}
-                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
+                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300 text-white"
               />
-            </motion.a>
+            </MagneticButton>
 
-            <motion.a
+            <MagneticButton
+              as="a"
               href="/resume.pdf"
-              download="Sreenandh_M_Resume.pdf"
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.95 }}
               className="group flex items-center justify-center space-x-2 border-2 border-gray-600 hover:border-green-400 bg-slate-900/50 backdrop-blur-sm px-8 py-4 rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-green-500/10 hover:to-emerald-500/10 shadow-lg hover:shadow-[0_0_30px_rgba(34,197,94,0.3)]"
             >
               <FileDown
                 size={20}
-                className="group-hover:translate-y-1 transition-transform duration-300"
+                className="group-hover:translate-y-1 transition-transform duration-300 text-white"
               />
-              <span className="font-medium">Download CV</span>
-            </motion.a>
+              <span className="font-medium text-white">Download CV</span>
+            </MagneticButton>
           </motion.div>
 
-          {/* Social Links */}
+          {/* Social Links with enhanced hover */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.8 }}
             className="flex justify-center space-x-4 sm:space-x-6 px-4"
           >
-            {[
-              {
-                icon: Github,
-                href: "https://github.com/sreenandh",
-                label: "GitHub",
-                color: "from-gray-400 to-gray-600",
-              },
-              {
-                icon: Linkedin,
-                href: "https://www.linkedin.com/in/sreenandh-m/",
-                label: "LinkedIn",
-                color: "from-blue-400 to-blue-600",
-              },
-              {
-                icon: Mail,
-                href: "mailto:sreenandhnandhu123@gmail.com",
-                label: "Email",
-                color: "from-purple-400 to-purple-600",
-              },
-              {
-                icon: Phone,
-                href: "tel:+917012434020",
-                label: "Phone",
-                color: "from-cyan-400 to-cyan-600",
-              },
-            ].map((social, index) => (
-              <motion.a
+            {socialLinks.map((social, index) => (
+              <MagneticButton
                 key={social.label}
+                as="a"
                 href={social.href}
                 target={social.href.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  social.href.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  delay: 1.2 + index * 0.1,
-                  type: "spring",
-                  stiffness: 200,
-                }}
-                whileHover={{ scale: 1.1, y: -3 }}
-                whileTap={{ scale: 0.9 }}
-                className={`w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-slate-800/50 border border-slate-700/50 text-gray-400 hover:text-white hover:bg-gradient-to-r hover:${social.color} hover:border-transparent transition-all duration-300 group relative`}
-                aria-label={social.label}
+                rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                strength={0.5}
               >
-                <social.icon size={20} />
-                <div
-                  className={`absolute inset-0 rounded-full bg-gradient-to-r ${social.color} opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300`}
-                />
-              </motion.a>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    delay: 1.2 + index * 0.1,
+                    type: "spring",
+                    stiffness: 200,
+                  }}
+                  whileHover={{ scale: 1.15, y: -5 }}
+                  className={`w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-full bg-slate-800/50 border border-slate-700/50 text-gray-400 hover:text-white hover:bg-gradient-to-r hover:${social.color} hover:border-transparent transition-all duration-300 group relative overflow-hidden`}
+                  aria-label={social.label}
+                >
+                  <social.icon size={20} className="relative z-10" />
+                  <motion.div
+                    className={`absolute inset-0 rounded-full bg-gradient-to-r ${social.color} opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-300`}
+                  />
+                </motion.div>
+              </MagneticButton>
             ))}
           </motion.div>
         </motion.div>
