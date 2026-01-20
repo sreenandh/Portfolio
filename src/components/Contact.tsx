@@ -128,7 +128,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-16 sm:py-24 relative overflow-hidden">
       {/* Animated background */}
       <motion.div
         animate={{
@@ -136,7 +136,7 @@ const Contact: React.FC = () => {
           scale: [1, 1.2, 1],
         }}
         transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-        className="absolute top-20 left-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"
+        className="absolute top-20 left-10 w-64 sm:w-96 h-64 sm:h-96 bg-blue-500/5 rounded-full blur-3xl"
       />
       <motion.div
         animate={{
@@ -144,10 +144,10 @@ const Contact: React.FC = () => {
           scale: [1, 1.3, 1],
         }}
         transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-        className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"
+        className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-purple-500/5 rounded-full blur-3xl"
       />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -156,18 +156,18 @@ const Contact: React.FC = () => {
           className="max-w-6xl mx-auto"
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants} className="text-center mb-10 sm:mb-16">
             <motion.div
               initial={{ scale: 0 }}
               animate={inView ? { scale: 1 } : { scale: 0 }}
               transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-full px-6 py-2 mb-6"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6"
             >
               <MessageCircle className="w-4 h-4 text-blue-400" />
-              <span className="text-blue-300 text-sm font-medium">Get in Touch</span>
+              <span className="text-blue-300 text-xs sm:text-sm font-medium">Get in Touch</span>
             </motion.div>
 
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Let's Work Together
               </span>
@@ -176,22 +176,22 @@ const Contact: React.FC = () => {
               initial={{ scaleX: 0 }}
               animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"
+              className="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"
             />
-            <p className="text-gray-300 mt-6 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-300 text-sm sm:text-base mt-4 sm:mt-6 max-w-2xl mx-auto leading-relaxed px-4">
               Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-5 gap-12">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
             {/* Contact Information - 2 columns */}
-            <motion.div variants={itemVariants} className="lg:col-span-2 space-y-8">
+            <motion.div variants={itemVariants} className="lg:col-span-2 space-y-6 sm:space-y-8">
               <div>
-                <h3 className="text-2xl font-semibold mb-6 flex items-center space-x-2">
-                  <MessageCircle className="w-6 h-6 text-blue-400" />
+                <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 flex items-center space-x-2">
+                  <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
                   <span>Get In Touch</span>
                 </h3>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {contactInfo.map((info, index) => (
                     <motion.div
                       key={info.label}

@@ -57,8 +57,8 @@ const About: React.FC = () => {
   };
 
   return (
-    <section id="about" className="py-24 relative">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-16 sm:py-24 relative">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -66,22 +66,22 @@ const About: React.FC = () => {
           animate={inView ? "visible" : "hidden"}
           className="max-w-6xl mx-auto"
         >
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 About Me
               </span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
+            <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-12 items-start">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-start">
             {/* Profile Photo */}
             <motion.div variants={itemVariants} className="lg:col-span-1 flex justify-center">
               <div className="relative">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="relative w-80 h-80 rounded-2xl overflow-hidden border-4 border-blue-500/30 shadow-2xl"
+                  className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border-4 border-blue-500/30 shadow-2xl"
                 >
                   <img
                     src="https://res.cloudinary.com/drvhrv1zx/image/upload/v1756414247/de47b1ba-6d85-443e-8295-9096ca4f4162_2_hjm9yj.jpg"
@@ -91,20 +91,20 @@ const About: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent"></div>
                 </motion.div>
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center border-4 border-slate-900">
-                  <Code className="w-8 h-8 text-white" />
+                <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center border-4 border-slate-900">
+                  <Code className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                 </div>
               </div>
             </motion.div>
 
             {/* About Content */}
-            <motion.div variants={itemVariants} className="lg:col-span-2 space-y-6">
-              <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/20">
-                <div className="flex items-center space-x-3 mb-6">
-                  <User className="w-6 h-6 text-blue-400" />
-                  <h3 className="text-2xl font-semibold">Who I Am</h3>
+            <motion.div variants={itemVariants} className="lg:col-span-2 space-y-4 sm:space-y-6">
+              <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-5 sm:p-8 border border-blue-500/20">
+                <div className="flex items-center space-x-3 mb-4 sm:mb-6">
+                  <User className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
+                  <h3 className="text-xl sm:text-2xl font-semibold">Who I Am</h3>
                 </div>
-                <div className="space-y-4 text-gray-300 leading-relaxed">
+                <div className="space-y-3 sm:space-y-4 text-gray-300 leading-relaxed text-sm sm:text-base">
                   <p>
                     Hi, I'm <span className="text-blue-400 font-semibold">Sreenandh M</span>, a passionate Full Stack Developer
                     with expertise in modern web technologies. I recently graduated with a B.Tech in Computer Science and Engineering
@@ -115,7 +115,7 @@ const About: React.FC = () => {
                     cloud-native banking platforms to AI-powered fitness applications. I love learning new technologies and
                     taking on challenging projects that push the boundaries of what's possible.
                   </p>
-                  <p>
+                  <p className="hidden sm:block">
                     I'm passionate about creating exceptional user experiences and writing clean, maintainable code.
                     Currently based in Kerala, India, and open to exciting opportunities worldwide.
                   </p>
@@ -123,43 +123,43 @@ const About: React.FC = () => {
               </div>
 
               {/* Quick Info Cards */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10 text-center"
+                  className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-blue-500/10 text-center"
                 >
-                  <MapPin className="w-6 h-6 text-blue-400 mx-auto mb-3" />
-                  <p className="text-sm text-gray-400 mb-1">Location</p>
-                  <p className="text-white font-medium">Kannur, Kerala</p>
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mx-auto mb-2 sm:mb-3" />
+                  <p className="text-xs sm:text-sm text-gray-400 mb-1">Location</p>
+                  <p className="text-white font-medium text-sm sm:text-base">Kannur, Kerala</p>
                 </motion.div>
 
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10 text-center"
+                  className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-blue-500/10 text-center"
                 >
-                  <Award className="w-6 h-6 text-blue-400 mx-auto mb-3" />
-                  <p className="text-sm text-gray-400 mb-1">Experience</p>
-                  <p className="text-white font-medium" title={`Calculated: ${experience}`}>
+                  <Award className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mx-auto mb-2 sm:mb-3" />
+                  <p className="text-xs sm:text-sm text-gray-400 mb-1">Experience</p>
+                  <p className="text-white font-medium text-sm sm:text-base" title={`Calculated: ${experience}`}>
                     {experience || 'Calculating...'}
                   </p>
                 </motion.div>
 
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10 text-center"
+                  className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-blue-500/10 text-center"
                 >
-                  <GraduationCap className="w-6 h-6 text-blue-400 mx-auto mb-3" />
-                  <p className="text-sm text-gray-400 mb-1">Education</p>
-                  <p className="text-white font-medium">B.Tech CSE</p>
+                  <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mx-auto mb-2 sm:mb-3" />
+                  <p className="text-xs sm:text-sm text-gray-400 mb-1">Education</p>
+                  <p className="text-white font-medium text-sm sm:text-base">B.Tech CSE</p>
                 </motion.div>
 
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-6 border border-blue-500/10 text-center"
+                  className="bg-slate-800/30 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-blue-500/10 text-center"
                 >
-                  <Code className="w-6 h-6 text-blue-400 mx-auto mb-3" />
-                  <p className="text-sm text-gray-400 mb-1">Focus</p>
-                  <p className="text-white font-medium">Full Stack</p>
+                  <Code className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mx-auto mb-2 sm:mb-3" />
+                  <p className="text-xs sm:text-sm text-gray-400 mb-1">Focus</p>
+                  <p className="text-white font-medium text-sm sm:text-base">Full Stack</p>
                 </motion.div>
               </div>
 
