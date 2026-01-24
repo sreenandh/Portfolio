@@ -124,7 +124,7 @@ const Hero: React.FC = () => {
       icon: Mail,
       href: "mailto:sreenandhnandhu123@gmail.com",
       label: "Email",
-      color: "from-purple-400 to-purple-600",
+      color: "from-teal-400 to-teal-600",
     },
     {
       icon: Phone,
@@ -163,7 +163,7 @@ const Hero: React.FC = () => {
             scale: [1, 0.8, 1.4, 1.1, 1],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-10 right-10 w-[700px] h-[700px] bg-gradient-to-l from-purple-500/20 via-blue-500/15 to-transparent rounded-full blur-3xl"
+          className="absolute bottom-10 right-10 w-[700px] h-[700px] bg-gradient-to-l from-cyan-500/20 via-blue-500/15 to-transparent rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -172,7 +172,7 @@ const Hero: React.FC = () => {
             scale: [1, 1.2, 0.85, 1.15, 1],
           }}
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-indigo-500/15 via-purple-500/10 to-cyan-500/10 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-indigo-500/15 via-cyan-500/10 to-cyan-500/10 rounded-full blur-3xl"
         />
 
         {/* Animated particles */}
@@ -223,7 +223,7 @@ const Hero: React.FC = () => {
             x: mousePosition.x * -1.5,
             y: mousePosition.y * -1.5,
           }}
-          className="absolute top-1/3 right-[8%] text-purple-400/15 hidden lg:block"
+          className="absolute top-1/3 right-[8%] text-cyan-400/15 hidden lg:block"
         >
           <Rocket size={110} strokeWidth={1.2} />
         </motion.div>
@@ -271,7 +271,7 @@ const Hero: React.FC = () => {
             x: mousePosition.x * -2,
             y: mousePosition.y * 1.5,
           }}
-          className="absolute top-[20%] right-[25%] text-pink-400/10 hidden lg:block"
+          className="absolute top-[20%] right-[25%] text-teal-400/10 hidden lg:block"
         >
           <Zap size={65} strokeWidth={1.2} />
         </motion.div>
@@ -327,7 +327,7 @@ const Hero: React.FC = () => {
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 mx-auto mt-6 rounded-full origin-center"
+              className="h-1.5 bg-gradient-to-r from-blue-500 via-cyan-500 to-cyan-500 mx-auto mt-6 rounded-full origin-center"
               style={{ width: "60%" }}
             />
           </motion.h1>
@@ -385,7 +385,7 @@ const Hero: React.FC = () => {
               href="https://github.com/sreenandh"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-center space-x-2 border-2 border-gray-600 hover:border-blue-400 bg-slate-900/50 backdrop-blur-sm px-8 py-4 rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10 shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
+              className="group flex items-center justify-center space-x-2 border-2 border-gray-600 hover:border-blue-400 bg-slate-900/50 backdrop-blur-sm px-8 py-4 rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-cyan-500/10 shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
             >
               <Github
                 size={20}

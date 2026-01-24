@@ -43,7 +43,7 @@ const Education = () => {
       date: '2024',
       description: 'Modern responsive web design principles and CSS frameworks',
       link: 'https://freecodecamp.org/certification/fcc29105209-d2d7-4e83-81f6-67d991f8559b/responsive-web-design',
-      color: 'from-violet-500 to-purple-500'
+      color: 'from-sky-500 to-blue-600'
     },
     {
       title: 'Introduction to Generative AI',
@@ -134,7 +134,7 @@ const Education = () => {
           initial="initial"
           animate="animate"
           transition={{ delay: 1 }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"
         />
       </div>
 
@@ -154,7 +154,7 @@ const Education = () => {
               transition={{ duration: 0.5, type: "spring" }}
               className="inline-block mb-4"
             >
-              <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-3 rounded-2xl backdrop-blur-sm border border-blue-500/20">
+              <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 p-3 rounded-2xl backdrop-blur-sm border border-blue-500/20">
                 <GraduationCap className="w-8 h-8 text-blue-400" />
               </div>
             </motion.div>
@@ -190,7 +190,7 @@ const Education = () => {
                   whileHover={{ y: -5 }}
                   className="group relative"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
                   <div className="relative bg-slate-800/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-700/50 group-hover:border-blue-500/30 transition-all duration-300">
                     <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 lg:gap-6 mb-6">
                       <div className="flex-1">
@@ -225,7 +225,7 @@ const Education = () => {
             <motion.div variants={itemVariants}>
               <div className="flex items-center gap-3 mb-6 sm:mb-8">
                 <div className="p-2 bg-blue-500/20 rounded-lg">
-                  <Award className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
+                  <Award className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400" />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white">Certifications</h3>
               </div>
@@ -239,10 +239,10 @@ const Education = () => {
                     className="group relative"
                   >
                     <div className={`absolute inset-0 bg-gradient-to-r ${cert.color} rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-all duration-300`} />
-                    <div className="relative h-full bg-slate-800/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-slate-700/50 group-hover:border-purple-500/30 transition-all duration-300">
+                    <div className="relative h-full bg-slate-800/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-slate-700/50 group-hover:border-cyan-500/30 transition-all duration-300">
                       <div className="flex items-start justify-between gap-3 mb-4">
                         <div className="flex-1">
-                          <h4 className="text-base sm:text-lg font-bold text-white mb-2 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-400 group-hover:to-purple-400 transition-all">
+                          <h4 className="text-base sm:text-lg font-bold text-white mb-2 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-400 group-hover:to-cyan-400 transition-all">
                             {cert.link ? (
                               <a
                                 href={cert.link}

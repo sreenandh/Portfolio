@@ -46,7 +46,7 @@ const ScrollProgress: React.FC = () => {
         }}
         transition={{ duration: 0.3 }}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl hover:scale-110 transition-all duration-300 group"
+        className="fixed bottom-8 right-8 z-50 w-14 h-14 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl hover:scale-110 transition-all duration-300 group"
         whileHover={{ y: -8 }}
         whileTap={{ scale: 0.9 }}
         aria-label="Scroll to top"
@@ -66,7 +66,7 @@ const ScrollProgress: React.FC = () => {
         </svg>
 
         {/* Pulse effect */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300" />
       </motion.button>
 
       {/* Scroll Percentage Indicator - Fixed and Enhanced */}
@@ -83,7 +83,7 @@ const ScrollProgress: React.FC = () => {
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <span className="text-base font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="text-base font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               {scrollPercentage}%
             </span>
           </motion.div>

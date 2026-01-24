@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Code2, Home, User, Briefcase, FolderOpen, GraduationCap, Mail, Zap } from 'lucide-react';
+import { Menu, X, Sparkles, Home, User, Briefcase, FolderOpen, GraduationCap, Mail, Zap } from 'lucide-react';
 
 interface NavItem {
   href: string;
@@ -119,13 +119,18 @@ const Header: React.FC = () => {
             >
               <div className="relative">
                 <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                  className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center"
+                  whileHover={{ scale: 1.1, rotate: 45 }}
+                  transition={{ duration: 0.3 }}
+                  className="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-blue-500/30 flex items-center justify-center shadow-lg p-2"
                 >
-                  <Code2 className="w-5 h-5 text-white" />
+                  <div className="grid grid-cols-2 gap-1">
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                  </div>
                 </motion.div>
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 blur-lg opacity-20"></div>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 blur-lg opacity-20"></div>
               </div>
               <div className="hidden sm:block">
                 <span className="text-xl font-bold text-white">
@@ -158,7 +163,7 @@ const Header: React.FC = () => {
 
                     {/* Animated underline on hover */}
                     <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400"
                       initial={{ scaleX: 0, opacity: 0 }}
                       whileHover={{ scaleX: 1, opacity: 1 }}
                       transition={{ duration: 0.3 }}
@@ -169,7 +174,7 @@ const Header: React.FC = () => {
                     {isActive && (
                       <motion.div
                         layoutId="activeTab"
-                        className="absolute -bottom-1 left-1/2 w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full transform -translate-x-1/2"
+                        className="absolute -bottom-1 left-1/2 w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full transform -translate-x-1/2"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
@@ -250,8 +255,8 @@ const Header: React.FC = () => {
                 {/* Mobile Menu Header */}
                 <div className="flex items-center justify-between p-6 border-b border-slate-700/50">
                   <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-                      <Code2 className="w-4 h-4 text-white" />
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center">
+                      <Sparkles className="w-4 h-4 text-white" />
                     </div>
                     <div>
                       <span className="text-lg font-bold text-white">Sreenandh M</span>

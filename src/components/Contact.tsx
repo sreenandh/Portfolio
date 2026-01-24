@@ -144,7 +144,7 @@ const Contact: React.FC = () => {
           scale: [1, 1.3, 1],
         }}
         transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-        className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-purple-500/5 rounded-full blur-3xl"
+        className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-cyan-500/5 rounded-full blur-3xl"
       />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -161,14 +161,14 @@ const Contact: React.FC = () => {
               initial={{ scale: 0 }}
               animate={inView ? { scale: 1 } : { scale: 0 }}
               transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6"
             >
               <MessageCircle className="w-4 h-4 text-blue-400" />
               <span className="text-blue-300 text-xs sm:text-sm font-medium">Get in Touch</span>
             </motion.div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                 Let's Work Together
               </span>
             </h2>
@@ -176,7 +176,7 @@ const Contact: React.FC = () => {
               initial={{ scaleX: 0 }}
               animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"
+              className="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto rounded-full"
             />
             <p className="text-gray-300 text-sm sm:text-base mt-4 sm:mt-6 max-w-2xl mx-auto leading-relaxed px-4">
               Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
@@ -241,7 +241,7 @@ const Contact: React.FC = () => {
                       transition={{ delay: 1 + index * 0.1, type: 'spring', stiffness: 200 }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.9 }}
-                      className="w-14 h-14 bg-slate-800/50 backdrop-blur-sm rounded-xl flex items-center justify-center border border-blue-500/20 hover:border-blue-400/40 hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-purple-500/20 transition-all duration-300 group"
+                      className="w-14 h-14 bg-slate-800/50 backdrop-blur-sm rounded-xl flex items-center justify-center border border-blue-500/20 hover:border-blue-400/40 hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-cyan-500/20 transition-all duration-300 group"
                       aria-label={social.label}
                     >
                       <social.icon className="w-5 h-5 text-gray-300 group-hover:text-blue-400 transition-colors duration-300" />
@@ -384,11 +384,11 @@ const Contact: React.FC = () => {
                   disabled={isSubmitting}
                   whileHover={{ scale: isSubmitting ? 1 : 1.03, y: isSubmitting ? 0 : -2 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                  className="relative w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-2xl hover:shadow-blue-500/30 overflow-hidden group"
+                  className="relative w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-2xl hover:shadow-blue-500/30 overflow-hidden group"
                 >
                   {/* Animated background */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400"
+                    className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400"
                     initial={{ x: '-100%' }}
                     whileHover={{ x: '100%' }}
                     transition={{ duration: 0.6 }}

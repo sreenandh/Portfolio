@@ -34,7 +34,7 @@ const Skills: React.FC = () => {
       title: 'Databases & Cloud',
       icon: <Database className="w-6 h-6" />,
       skills: ['MongoDB', 'MySQL', 'AWS (S3, EC2)', 'Firebase'],
-      color: 'from-purple-500 to-violet-500'
+      color: 'from-cyan-500 to-teal-500'
     },
     {
       title: 'Tools & Technologies',
@@ -119,7 +119,7 @@ const Skills: React.FC = () => {
           x: [0, -30, 0],
         }}
         transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-20 left-10 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl"
+        className="absolute bottom-20 left-10 w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl"
       />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -136,7 +136,7 @@ const Skills: React.FC = () => {
               initial={{ scale: 0 }}
               animate={inView ? { scale: 1 } : { scale: 0 }}
               transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-full px-6 py-2 mb-6 pulse-glow"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-full px-6 py-2 mb-6 pulse-glow"
             >
               <Sparkles className="w-4 h-4 text-blue-400" />
               <span className="text-blue-300 text-sm font-medium">Technical Expertise</span>
@@ -151,7 +151,7 @@ const Skills: React.FC = () => {
               initial={{ scaleX: 0 }}
               animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-24 h-1.5 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 mx-auto rounded-full"
+              className="w-24 h-1.5 bg-gradient-to-r from-blue-400 via-cyan-400 to-cyan-400 mx-auto rounded-full"
             />
           </motion.div>
 
@@ -225,7 +225,7 @@ const Skills: React.FC = () => {
               transition={{ delay: 0.6 }}
               className="inline-flex items-center space-x-2 mb-8"
             >
-              <Brain className="w-5 h-5 text-purple-400" />
+              <Brain className="w-5 h-5 text-cyan-400" />
               <h3 className="text-2xl font-semibold text-white">
                 Other Skills & Concepts
               </h3>
@@ -253,7 +253,7 @@ const Skills: React.FC = () => {
                       rotate: [0, -3, 3, 0],
                       boxShadow: '0 10px 30px rgba(139, 92, 246, 0.3)',
                     }}
-                    className="group relative px-5 py-2.5 bg-gradient-to-r from-slate-800 to-slate-700 text-gray-300 rounded-xl text-sm border border-slate-600 hover:border-purple-400/60 hover:text-purple-300 transition-all duration-300 cursor-default shadow-lg hover:shadow-purple-500/25 overflow-hidden"
+                    className="group relative px-5 py-2.5 bg-gradient-to-r from-slate-800 to-slate-700 text-gray-300 rounded-xl text-sm border border-slate-600 hover:border-cyan-400/60 hover:text-cyan-300 transition-all duration-300 cursor-default shadow-lg hover:shadow-cyan-500/25 overflow-hidden"
                   >
                     {/* Shimmer effect on hover */}
                     <motion.div
@@ -274,7 +274,7 @@ const Skills: React.FC = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className="mt-16 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-cyan-500/10 rounded-2xl p-8 border border-blue-500/20 backdrop-blur-sm glass-morphism"
+            className="mt-16 bg-gradient-to-br from-blue-500/10 via-cyan-500/10 to-cyan-500/10 rounded-2xl p-8 border border-blue-500/20 backdrop-blur-sm glass-morphism"
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
@@ -294,7 +294,7 @@ const Skills: React.FC = () => {
                   <motion.div
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                    className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mb-3 group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-shadow duration-300"
+                    className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 mb-3 group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-shadow duration-300"
                   >
                     <stat.icon className="w-6 h-6 text-white" />
                   </motion.div>

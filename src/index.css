@@ -22,8 +22,8 @@
 @layer utilities {
 
   /* Text gradients */
-  .text-gradient-blue-purple {
-    @apply bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent;
+  .text-gradient-blue-cyan {
+    @apply bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent;
   }
 
   .text-gradient-animate {
@@ -65,9 +65,9 @@
   .text-gradient-animate {
     background: linear-gradient(90deg,
         #60a5fa 0%,
-        #a78bfa 25%,
+        #22d3ee 25%,
         #38bdf8 50%,
-        #a78bfa 75%,
+        #22d3ee 75%,
         #60a5fa 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -92,10 +92,10 @@
       0 0 60px rgba(59, 130, 246, 0.1);
   }
 
-  .glow-purple {
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.5),
-      0 0 40px rgba(147, 51, 234, 0.3),
-      0 0 60px rgba(147, 51, 234, 0.1);
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5),
+      0 0 40px rgba(6, 182, 212, 0.3),
+      0 0 60px rgba(6, 182, 212, 0.1);
   }
 
   .text-glow {
@@ -107,7 +107,7 @@
   .gradient-border {
     position: relative;
     background: linear-gradient(var(--bg-color, #0f172a), var(--bg-color, #0f172a)) padding-box,
-      linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6) border-box;
+      linear-gradient(135deg, #3b82f6, #06b6d4, #06b6d4, #3b82f6) border-box;
     border: 2px solid transparent;
     background-size: 100% 100%, 200% 200%;
     animation: border-rotate 4s linear infinite;
@@ -176,7 +176,7 @@
 
   50% {
     box-shadow: 0 0 40px rgba(59, 130, 246, 0.8),
-      0 0 60px rgba(147, 51, 234, 0.4);
+      0 0 60px rgba(6, 182, 212, 0.4);
   }
 }
 
@@ -202,13 +202,13 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(180deg, #3b82f6, #06b6d4);
   border-radius: 10px;
   border: 2px solid #0f172a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #2563eb, #7c3aed);
+  background: linear-gradient(180deg, #2563eb, #0891b2);
 }
 
 /* Selection color */

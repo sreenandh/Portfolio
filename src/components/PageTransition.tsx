@@ -33,16 +33,16 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-                className="w-32 h-32 rounded-full border-4 border-transparent border-t-blue-500 border-r-purple-500"
+                className="w-32 h-32 rounded-full border-4 border-transparent border-t-blue-500 border-r-cyan-500"
               />
-              
+
               {/* Inner pulsing circle */}
               <motion.div
                 animate={{ scale: [0.8, 1.2, 0.8] }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 blur-xl opacity-50"
+                className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 blur-xl opacity-50"
               />
-              
+
               {/* Center icon */}
               <motion.div
                 animate={{ y: [-5, 5, -5] }}
@@ -75,7 +75,7 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children }) => {
               <motion.p
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+                className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"
               >
                 Sreenandh M
               </motion.p>

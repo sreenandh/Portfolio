@@ -68,11 +68,11 @@ const About: React.FC = () => {
         >
           <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                 About Me
               </span>
             </h2>
-            <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
+            <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto rounded-full"></div>
           </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-start">
@@ -90,7 +90,7 @@ const About: React.FC = () => {
                     loading="lazy"
                   />
                 </motion.div>
-                <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center border-4 border-slate-900">
+                <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center border-4 border-slate-900">
                   <Code className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                 </div>
               </div>
@@ -163,7 +163,7 @@ const About: React.FC = () => {
               </div>
 
               {/* Fun Stats */}
-              <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl p-6 backdrop-blur-sm border border-blue-500/20">
+              <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-2xl p-6 backdrop-blur-sm border border-blue-500/20">
                 <h4 className="text-xl font-semibold mb-6 text-center text-white">Quick Stats</h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex justify-between items-center">
@@ -194,7 +194,7 @@ const About: React.FC = () => {
                     <span className="text-gray-300">Contributed to CloudBank platform</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
                     <span className="text-gray-300">Deloitte Job Simulation completed</span>
                   </div>
                   <div className="flex items-center space-x-3">

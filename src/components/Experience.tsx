@@ -92,16 +92,16 @@ const Experience: React.FC = () => {
         >
           <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                 Experience
               </span>
             </h2>
-            <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
+            <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto rounded-full"></div>
           </motion.div>
 
           <div className="relative">
             {/* Timeline line - hidden on mobile */}
-            <div className="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-purple-400 hidden sm:block"></div>
+            <div className="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-cyan-400 hidden sm:block"></div>
 
             <div className="space-y-8 sm:space-y-12">
               {experiences.map((exp, index) => (
@@ -112,7 +112,7 @@ const Experience: React.FC = () => {
                   className="relative group"
                 >
                   {/* Timeline dot - hidden on mobile */}
-                  <div className="absolute left-2 sm:left-6 w-4 h-4 bg-blue-400 rounded-full border-4 border-slate-900 hidden sm:block group-hover:bg-purple-400 transition-colors duration-300">
+                  <div className="absolute left-2 sm:left-6 w-4 h-4 bg-blue-400 rounded-full border-4 border-slate-900 hidden sm:block group-hover:bg-cyan-400 transition-colors duration-300">
                     {exp.isCurrentRole && (
                       <div className="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-75"></div>
                     )}
@@ -189,7 +189,7 @@ const Experience: React.FC = () => {
             variants={itemVariants}
             className="text-center mt-12"
           >
-            <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl p-8 border border-blue-500/20">
+            <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl p-8 border border-blue-500/20">
               <h3 className="text-xl font-semibold text-white mb-3">
                 Ready to Work Together?
               </h3>
@@ -201,7 +201,7 @@ const Experience: React.FC = () => {
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all duration-200 shadow-lg hover:shadow-xl"
               >
                 <span>Get in Touch</span>
                 <ExternalLink className="w-4 h-4" />

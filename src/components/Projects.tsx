@@ -111,11 +111,11 @@ const ProjectCard: React.FC<{ project: Project; index: number; inView: boolean }
 
       {/* Glow effect on hover */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-cyan-500/0 transition-all duration-500 pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-cyan-500/0 to-cyan-500/0 transition-all duration-500 pointer-events-none"
         animate={{
           background: isHovering
             ? 'linear-gradient(to bottom right, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1))'
-            : 'linear-gradient(to bottom right, rgba(59, 130, 246, 0), rgba(139, 92, 246, 0), rgba(6, 182, 212, 0))'
+            : 'linear-gradient(to bottom right, rgba(59, 130, 246, 0), rgba(6, 182, 212, 0), rgba(6, 182, 212, 0))'
         }}
       />
 
@@ -129,7 +129,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; inView: boolean }
           transition={{ duration: 0.4 }}
           className="w-full h-full"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 mix-blend-overlay z-10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 mix-blend-overlay z-10" />
           <img
             src={project.image}
             alt={project.title}
@@ -145,7 +145,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; inView: boolean }
         <motion.h3
           animate={{ x: isHovering ? 8 : 0 }}
           transition={{ duration: 0.2 }}
-          className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300"
+          className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300"
         >
           {project.title}
         </motion.h3>
@@ -171,7 +171,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; inView: boolean }
                 rotate: [-2, 2, -2, 0],
                 boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)',
               }}
-              className="px-3 py-1.5 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-300 rounded-lg text-xs font-medium border border-blue-500/20 hover:border-blue-400/60 hover:from-blue-500/20 hover:to-purple-500/20 transition-all duration-300 cursor-default"
+              className="px-3 py-1.5 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 text-blue-300 rounded-lg text-xs font-medium border border-blue-500/20 hover:border-blue-400/60 hover:from-blue-500/20 hover:to-cyan-500/20 transition-all duration-300 cursor-default"
             >
               {tech}
             </motion.span>
@@ -201,7 +201,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; inView: boolean }
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05, x: 3 }}
               whileTap={{ scale: 0.95 }}
-              className="flex-1 group/btn relative overflow-hidden flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
+              className="flex-1 group/btn relative overflow-hidden flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-500" />
               <ExternalLink size={18} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform relative z-10" />
@@ -217,7 +217,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; inView: boolean }
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: isHovering ? 1 : 0, scale: isHovering ? 1 : 0 }}
         transition={{ duration: 0.4 }}
-        className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-500/30 via-purple-500/20 to-transparent rounded-bl-full blur-2xl pointer-events-none"
+        className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-500/30 via-cyan-500/20 to-transparent rounded-bl-full blur-2xl pointer-events-none"
       />
     </motion.div>
   );
@@ -392,7 +392,7 @@ const Projects: React.FC = () => {
           x: [0, -50, 0],
         }}
         transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-3xl"
+        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-3xl"
       />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -415,8 +415,8 @@ const Projects: React.FC = () => {
               transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
               className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-6 py-2 mb-6 pulse-glow"
             >
-              <Zap className="w-4 h-4 text-purple-400" />
-              <span className="text-purple-300 text-sm font-medium">
+              <Zap className="w-4 h-4 text-cyan-400" />
+              <span className="text-cyan-300 text-sm font-medium">
                 Portfolio Showcase
               </span>
             </motion.div>
@@ -434,7 +434,7 @@ const Projects: React.FC = () => {
               initial={{ scaleX: 0 }}
               animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="w-32 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 mx-auto rounded-full"
+              className="w-32 h-1.5 bg-gradient-to-r from-blue-500 via-cyan-500 to-cyan-500 mx-auto rounded-full"
             />
           </motion.div>
 
