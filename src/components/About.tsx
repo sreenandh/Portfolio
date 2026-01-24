@@ -89,7 +89,6 @@ const About: React.FC = () => {
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent"></div>
                 </motion.div>
                 <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center border-4 border-slate-900">
                   <Code className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
