@@ -24,6 +24,7 @@
   /* Text gradients */
   .text-gradient-blue-cyan {
     @apply bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent;
+    padding-bottom: 0.1em;
   }
 
   .text-gradient-animate {
@@ -74,6 +75,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: gradient-flow 4s ease infinite;
+    padding-bottom: 0.1em;
   }
 
   /* Enhanced glass effect */

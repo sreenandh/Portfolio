@@ -145,7 +145,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; inView: boolean }
         <motion.h3
           animate={{ x: isHovering ? 8 : 0 }}
           transition={{ duration: 0.2 }}
-          className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300"
+          className="text-2xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300 pb-1"
         >
           {project.title}
         </motion.h3>

@@ -92,7 +92,7 @@ const Experience: React.FC = () => {
         >
           <motion.div variants={itemVariants} className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent pb-1">
                 Experience
               </span>
             </h2>

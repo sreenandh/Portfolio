@@ -14,7 +14,7 @@ const Footer = () => {
             className="flex items-center space-x-2 mb-4 md:mb-0"
           >
             <Sparkles className="w-6 h-6 text-blue-400" />
-            <span className="text-lg font-semibold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="text-lg font-semibold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent pb-1">
               Sreenandh M
             </span>
           </motion.div>

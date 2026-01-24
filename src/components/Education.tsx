@@ -242,7 +242,7 @@ const Education = () => {
                     <div className="relative h-full bg-slate-800/80 backdrop-blur-xl rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-slate-700/50 group-hover:border-cyan-500/30 transition-all duration-300">
                       <div className="flex items-start justify-between gap-3 mb-4">
                         <div className="flex-1">
-                          <h4 className="text-base sm:text-lg font-bold text-white mb-2 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-400 group-hover:to-cyan-400 transition-all">
+                          <h4 className="text-base sm:text-lg font-bold text-white mb-2 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-400 group-hover:to-cyan-400 transition-all pb-1">
                             {cert.link ? (
                               <a
                                 href={cert.link}
