@@ -84,7 +84,7 @@ const About: React.FC = () => {
                   className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 rounded-2xl overflow-hidden border-4 border-blue-500/30 shadow-2xl"
                 >
                   <img
-                    src="https://res.cloudinary.com/drvhrv1zx/image/upload/v1756414247/de47b1ba-6d85-443e-8295-9096ca4f4162_2_hjm9yj.jpg"
+                    src="/profile.png"
                     alt="Sreenandh M - Full Stack Developer"
                     className="w-full h-full object-cover"
                     loading="lazy"
