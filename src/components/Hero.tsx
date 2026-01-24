@@ -211,9 +211,9 @@ const Hero: React.FC = () => {
             x: mousePosition.x * 2,
             y: mousePosition.y * 2,
           }}
-          className="absolute top-1/4 left-[5%] text-blue-400/15 hidden lg:block"
+          className="absolute top-1/4 left-[5%] text-blue-400/15"
         >
-          <Code2 size={90} strokeWidth={1.2} />
+          <Code2 size={40} className="sm:w-[90px] sm:h-[90px]" strokeWidth={1.2} />
         </motion.div>
         <motion.div
           custom={1}
@@ -223,9 +223,9 @@ const Hero: React.FC = () => {
             x: mousePosition.x * -1.5,
             y: mousePosition.y * -1.5,
           }}
-          className="absolute top-1/3 right-[8%] text-cyan-400/15 hidden lg:block"
+          className="absolute top-1/3 right-[8%] text-cyan-400/15"
         >
-          <Rocket size={110} strokeWidth={1.2} />
+          <Rocket size={50} className="sm:w-[110px] sm:h-[110px]" strokeWidth={1.2} />
         </motion.div>
         <motion.div
           custom={2}
@@ -235,9 +235,9 @@ const Hero: React.FC = () => {
             x: mousePosition.x * 1.2,
             y: mousePosition.y * 1.2,
           }}
-          className="absolute bottom-1/4 right-1/4 text-cyan-400/15 hidden md:block"
+          className="absolute bottom-1/4 right-1/4 text-cyan-400/15"
         >
-          <Sparkles size={70} strokeWidth={1.2} />
+          <Sparkles size={30} className="sm:w-[70px] sm:h-[70px]" strokeWidth={1.2} />
         </motion.div>
         <motion.div
           custom={3}
@@ -247,9 +247,9 @@ const Hero: React.FC = () => {
             x: mousePosition.x * -1,
             y: mousePosition.y * -1,
           }}
-          className="absolute bottom-1/3 left-[15%] text-cyan-400/15 hidden lg:block"
+          className="absolute bottom-1/3 left-[15%] text-cyan-400/15"
         >
-          <Terminal size={80} strokeWidth={1.2} />
+          <Terminal size={35} className="sm:w-[80px] sm:h-[80px]" strokeWidth={1.2} />
         </motion.div>
         <motion.div
           custom={4}
@@ -259,9 +259,9 @@ const Hero: React.FC = () => {
             x: mousePosition.x * 1.8,
             y: mousePosition.y * 1.8,
           }}
-          className="absolute top-[60%] right-[15%] text-indigo-400/15 hidden md:block"
+          className="absolute top-[60%] right-[15%] text-indigo-400/15"
         >
-          <Layers size={75} strokeWidth={1.2} />
+          <Layers size={35} className="sm:w-[75px] sm:h-[75px]" strokeWidth={1.2} />
         </motion.div>
         <motion.div
           custom={5}
@@ -271,9 +271,9 @@ const Hero: React.FC = () => {
             x: mousePosition.x * -2,
             y: mousePosition.y * 1.5,
           }}
-          className="absolute top-[20%] right-[25%] text-teal-400/10 hidden lg:block"
+          className="absolute top-[20%] right-[25%] text-teal-400/10"
         >
-          <Zap size={65} strokeWidth={1.2} />
+          <Zap size={30} className="sm:w-[65px] sm:h-[65px]" strokeWidth={1.2} />
         </motion.div>
       </div>
 
@@ -375,7 +375,7 @@ const Hero: React.FC = () => {
               href="mailto:sreenandhnandhu123@gmail.com"
               className="group relative flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-blue-500/30 overflow-hidden"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/25 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/25 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 hidden md:block" />
               <Mail size={20} className="relative z-10 text-white" />
               <span className="relative z-10 font-medium text-white">Get In Touch</span>
             </MagneticButton>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Server, Database, Wrench, Zap, Brain, Sparkles } from 'lucide-react';
@@ -10,6 +10,42 @@ interface SkillCategory {
   skills: string[];
   color: string;
 }
+
+const SkillIcon = ({ children, color }: { children: React.ReactNode; color: string }) => {
+  const [isTriggered, setIsTriggered] = useState(false);
+
+  return (
+    <motion.div
+      className="flex items-center justify-center mb-4 relative z-10 cursor-pointer"
+      whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
+      animate={isTriggered ? { scale: [1, 1.15, 1], rotate: [0, -10, 10, 0] } : {}}
+      transition={{ duration: 0.5 }}
+      onClick={() => setIsTriggered(true)}
+      onAnimationComplete={() => setIsTriggered(false)}
+    >
+      <div className={`p-3 rounded-xl bg-gradient-to-r ${color} text-white shadow-lg shadow-blue-500/20`}>
+        {children}
+      </div>
+    </motion.div>
+  );
+};
+
+const StatIcon = ({ children }: { children: React.ReactNode }) => {
+  const [isTriggered, setIsTriggered] = useState(false);
+
+  return (
+    <motion.div
+      className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 mb-3 group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-shadow duration-300 cursor-pointer"
+      whileHover={{ rotate: 360, scale: 1.1 }}
+      animate={isTriggered ? { rotate: 360, scale: [1, 1.1, 1] } : {}}
+      transition={{ duration: 0.6 }}
+      onClick={() => setIsTriggered(true)}
+      onAnimationComplete={() => setIsTriggered(false)}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const Skills: React.FC = () => {
   const [ref, inView] = useInView({
@@ -175,16 +211,10 @@ const Skills: React.FC = () => {
                 {/* Glow effect on hover */}
                 <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-15 blur-xl transition-opacity duration-300`} />
 
-                {/* Icon with enhanced animation */}
-                <motion.div
-                  whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
-                  transition={{ duration: 0.5 }}
-                  className="flex items-center justify-center mb-4 relative z-10"
-                >
-                  <div className={`p-3 rounded-xl bg-gradient-to-r ${category.color} text-white shadow-lg shadow-blue-500/20`}>
-                    {category.icon}
-                  </div>
-                </motion.div>
+                {/* Icon with enhanced animation - Responsive */}
+                <SkillIcon color={category.color}>
+                  {category.icon}
+                </SkillIcon>
 
                 <h3 className="text-xl font-semibold mb-6 text-center text-white relative z-10">
                   {category.title}
@@ -289,15 +319,12 @@ const Skills: React.FC = () => {
                   animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
                   transition={{ delay: 1.4 + index * 0.1, type: 'spring', stiffness: 200 }}
                   whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+                  whileTap={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
                   className="text-center group cursor-default"
                 >
-                  <motion.div
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                    className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 mb-3 group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-shadow duration-300"
-                  >
+                  <StatIcon>
                     <stat.icon className="w-6 h-6 text-white" />
-                  </motion.div>
+                  </StatIcon>
                   <div className="text-3xl font-bold text-white mb-1">
                     <AnimatedCounter
                       target={stat.count}

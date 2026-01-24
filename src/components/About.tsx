@@ -114,7 +114,7 @@ const About: React.FC = () => {
                     cloud-native banking platforms to AI-powered fitness applications. I love learning new technologies and
                     taking on challenging projects that push the boundaries of what's possible.
                   </p>
-                  <p className="hidden sm:block">
+                  <p>
                     I'm passionate about creating exceptional user experiences and writing clean, maintainable code.
                     Currently based in Kerala, India, and open to exciting opportunities worldwide.
                   </p>

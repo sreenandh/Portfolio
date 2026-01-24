@@ -101,7 +101,7 @@ const Experience: React.FC = () => {
 
           <div className="relative">
             {/* Timeline line - hidden on mobile */}
-            <div className="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-cyan-400 hidden sm:block"></div>
+            <div className="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-cyan-400"></div>
 
             <div className="space-y-8 sm:space-y-12">
               {experiences.map((exp, index) => (
@@ -112,13 +112,13 @@ const Experience: React.FC = () => {
                   className="relative group"
                 >
                   {/* Timeline dot - hidden on mobile */}
-                  <div className="absolute left-2 sm:left-6 w-4 h-4 bg-blue-400 rounded-full border-4 border-slate-900 hidden sm:block group-hover:bg-cyan-400 transition-colors duration-300">
+                  <div className="absolute left-2 sm:left-6 w-4 h-4 bg-blue-400 rounded-full border-4 border-slate-900 group-hover:bg-cyan-400 transition-colors duration-300">
                     {exp.isCurrentRole && (
                       <div className="absolute inset-0 bg-blue-400 rounded-full animate-ping opacity-75"></div>
                     )}
                   </div>
 
-                  <div className="sm:ml-16 md:ml-20 bg-slate-800/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-blue-500/20 hover:border-blue-400/40 hover:bg-slate-800/70 transition-all duration-300">
+                  <div className="ml-12 sm:ml-16 md:ml-20 bg-slate-800/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-blue-500/20 hover:border-blue-400/40 hover:bg-slate-800/70 transition-all duration-300">
                     <div className="flex flex-col gap-4 mb-4 sm:mb-6">
                       <div className="flex-1">
                         <div className="flex flex-wrap items-center gap-2 mb-2">
