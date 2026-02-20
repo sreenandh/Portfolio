@@ -15,8 +15,7 @@ const Education = () => {
       institution: 'Vimal Jyothi Engineering College',
       location: 'Kerala, India',
       period: '2020 – 2024',
-      description: 'Comprehensive study of computer science fundamentals, software engineering, data structures, algorithms, and modern web technologies.',
-      grade: 'CGPA: 8.5/10'
+      description: 'Comprehensive study of computer science fundamentals, software engineering, data structures, algorithms, and modern web technologies.'
     }
   ];
 
@@ -198,11 +197,7 @@ const Education = () => {
                           {edu.degree}
                         </h4>
                         <p className="text-blue-400 font-semibold text-base sm:text-lg mb-2">{edu.institution}</p>
-                        {edu.grade && (
-                          <div className="inline-block bg-gradient-to-r from-green-500/20 to-emerald-500/20 px-4 py-1.5 rounded-full border border-green-500/30 mb-3">
-                            <span className="text-green-300 font-medium text-sm">{edu.grade}</span>
-                          </div>
-                        )}
+                       
                       </div>
                       <div className="flex flex-col gap-2 lg:items-end">
                         <div className="flex items-center gap-2 text-gray-300 bg-slate-700/50 px-4 py-2 rounded-full">
