@@ -1,21 +1,16 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  Github,
-  Linkedin,
-  Mail,
-  Phone,
-  ExternalLink,
-  Sparkles,
-  Code2,
-  Rocket,
-  Terminal,
-  Layers,
-  FileDown,
-  Zap,
-} from "lucide-react";
+  LuGithub as Github,
+  LuLinkedin as Linkedin,
+  LuMail as Mail,
+  LuPhone as Phone,
+  LuExternalLink as ExternalLink,
+  LuSparkles as Sparkles,
+} from "react-icons/lu";
 import MagneticButton from "./MagneticButton";
 import TextReveal from "./TextReveal";
+import { AuroraBackground } from "./ui/starfall-portfolio-landing";
 
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
@@ -80,32 +75,6 @@ const Hero: React.FC = () => {
     document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Floating icons with improved physics
-  const floatingVariants = {
-    animate: (custom: number) => ({
-      y: [-20, 20, -20],
-      x: [-10, 10, -10],
-      rotate: [0, 360],
-      transition: {
-        y: { duration: 4 + custom, repeat: Infinity, ease: "easeInOut" },
-        x: { duration: 5 + custom, repeat: Infinity, ease: "easeInOut", delay: custom * 0.5 },
-        rotate: { duration: 25 + custom * 5, repeat: Infinity, ease: "linear" },
-      },
-    }),
-  };
-
-  // Enhanced particle effect
-  const particles = useMemo(() =>
-    Array.from({ length: 30 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 4 + 2,
-      duration: Math.random() * 15 + 8,
-      delay: Math.random() * 5,
-    })), []
-  );
-
   // Social links data
   const socialLinks = [
     {
@@ -137,145 +106,9 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Animated grid background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,black,transparent)]" />
-      </div>
-
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Gradient orbs with enhanced animations */}
-        <motion.div
-          animate={{
-            x: [0, 150, -100, 50, 0],
-            y: [0, -100, 80, -50, 0],
-            scale: [1, 1.3, 0.9, 1.1, 1],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-10 left-10 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/30 via-cyan-500/20 to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -150, 100, -50, 0],
-            y: [0, 120, -80, 50, 0],
-            scale: [1, 0.8, 1.4, 1.1, 1],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-10 right-10 w-[700px] h-[700px] bg-gradient-to-l from-cyan-500/20 via-blue-500/15 to-transparent rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, 120, -80, 40, 0],
-            y: [0, -70, 100, -40, 0],
-            scale: [1, 1.2, 0.85, 1.15, 1],
-          }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-indigo-500/15 via-cyan-500/10 to-cyan-500/10 rounded-full blur-3xl"
-        />
-
-        {/* Animated particles */}
-        {particles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className="absolute rounded-full"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: particle.size,
-              height: particle.size,
-              background: `radial-gradient(circle, rgba(59, 130, 246, 0.6), rgba(139, 92, 246, 0.3))`,
-            }}
-            animate={{
-              y: [0, -50, 0],
-              x: [0, Math.random() * 30 - 15, 0],
-              opacity: [0.2, 0.9, 0.2],
-              scale: [1, 1.8, 1],
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: particle.delay,
-            }}
-          />
-        ))}
-
-        {/* Floating tech icons with improved physics */}
-        <motion.div
-          custom={0}
-          variants={floatingVariants}
-          animate="animate"
-          style={{
-            x: mousePosition.x * 2,
-            y: mousePosition.y * 2,
-          }}
-          className="absolute top-1/4 left-[5%] text-blue-400/15"
-        >
-          <Code2 size={40} className="sm:w-[90px] sm:h-[90px]" strokeWidth={1.2} />
-        </motion.div>
-        <motion.div
-          custom={1}
-          variants={floatingVariants}
-          animate="animate"
-          style={{
-            x: mousePosition.x * -1.5,
-            y: mousePosition.y * -1.5,
-          }}
-          className="absolute top-1/3 right-[8%] text-cyan-400/15"
-        >
-          <Rocket size={50} className="sm:w-[110px] sm:h-[110px]" strokeWidth={1.2} />
-        </motion.div>
-        <motion.div
-          custom={2}
-          variants={floatingVariants}
-          animate="animate"
-          style={{
-            x: mousePosition.x * 1.2,
-            y: mousePosition.y * 1.2,
-          }}
-          className="absolute bottom-1/4 right-1/4 text-cyan-400/15"
-        >
-          <Sparkles size={30} className="sm:w-[70px] sm:h-[70px]" strokeWidth={1.2} />
-        </motion.div>
-        <motion.div
-          custom={3}
-          variants={floatingVariants}
-          animate="animate"
-          style={{
-            x: mousePosition.x * -1,
-            y: mousePosition.y * -1,
-          }}
-          className="absolute bottom-1/3 left-[15%] text-cyan-400/15"
-        >
-          <Terminal size={35} className="sm:w-[80px] sm:h-[80px]" strokeWidth={1.2} />
-        </motion.div>
-        <motion.div
-          custom={4}
-          variants={floatingVariants}
-          animate="animate"
-          style={{
-            x: mousePosition.x * 1.8,
-            y: mousePosition.y * 1.8,
-          }}
-          className="absolute top-[60%] right-[15%] text-indigo-400/15"
-        >
-          <Layers size={35} className="sm:w-[75px] sm:h-[75px]" strokeWidth={1.2} />
-        </motion.div>
-        <motion.div
-          custom={5}
-          variants={floatingVariants}
-          animate="animate"
-          style={{
-            x: mousePosition.x * -2,
-            y: mousePosition.y * 1.5,
-          }}
-          className="absolute top-[20%] right-[25%] text-teal-400/10"
-        >
-          <Zap size={30} className="sm:w-[65px] sm:h-[65px]" strokeWidth={1.2} />
-        </motion.div>
-      </div>
+      <AuroraBackground />
 
       {/* Main content with parallax */}
       <motion.div
@@ -358,7 +191,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="text-base sm:text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed px-4"
           >
-            Entry-level developer building full-stack web applications with
+            Developer building full-stack web applications with
             React, Node.js, and modern tools. Focused on writing clean code,
             learning best practices, and shipping reliable solutions.
           </motion.p>
@@ -403,10 +236,6 @@ const Hero: React.FC = () => {
               href="/resume.pdf"
               className="group flex items-center justify-center space-x-2 border-2 border-gray-600 hover:border-green-400 bg-slate-900/50 backdrop-blur-sm px-8 py-4 rounded-full transition-all duration-300 hover:bg-gradient-to-r hover:from-green-500/10 hover:to-emerald-500/10 shadow-lg hover:shadow-[0_0_30px_rgba(34,197,94,0.3)]"
             >
-              <FileDown
-                size={20}
-                className="group-hover:translate-y-1 transition-transform duration-300 text-white"
-              />
               <span className="font-medium text-white">Download CV</span>
             </MagneticButton>
           </motion.div>

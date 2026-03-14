@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, ExternalLink, MessageCircle, CheckCircle, AlertCircle } from 'lucide-react';
+import { LuMail as Mail, LuPhone as Phone, LuMapPin as MapPin, LuSend as Send, LuGithub as Github, LuLinkedin as Linkedin, LuExternalLink as ExternalLink, LuMessageCircle as MessageCircle } from 'react-icons/lu';
+import { FiCheckCircle as CheckCircle, FiAlertCircle as AlertCircle } from 'react-icons/fi';
 
 const Contact: React.FC = () => {
   const [ref, inView] = useInView({

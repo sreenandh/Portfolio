@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Sparkles } from 'lucide-react';
+import { LuHeart as Heart, LuSparkles as Sparkles } from 'react-icons/lu';
 
 const Footer = () => {
   return (

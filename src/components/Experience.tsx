@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Briefcase, Calendar, MapPin, ExternalLink } from 'lucide-react';
+import { LuBriefcase as Briefcase, LuCalendar as Calendar, LuMapPin as MapPin, LuExternalLink as ExternalLink } from 'react-icons/lu';
 
 interface ExperienceItem {
   title: string;

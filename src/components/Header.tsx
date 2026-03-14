@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles, Home, User, Briefcase, FolderOpen, GraduationCap, Mail, Zap } from 'lucide-react';
+import { LuMenu as Menu, LuX as X, LuSparkles as Sparkles, LuUser as User, LuBriefcase as Briefcase, LuFolderOpen as FolderOpen, LuGraduationCap as GraduationCap, LuMail as Mail, LuZap as Zap } from 'react-icons/lu';
+import { FiHome as Home } from 'react-icons/fi';
 
 interface NavItem {
   href: string;

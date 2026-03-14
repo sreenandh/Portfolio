@@ -1,8 +1,17 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const ThreeBackground = () => {
     const mountRef = useRef<HTMLDivElement>(null);
+    const { scrollY } = useScroll();
+    const [windowHeight, setWindowHeight] = useState(800);
+
+    useEffect(() => {
+        setWindowHeight(window.innerHeight);
+    }, []);
+
+    const opacity = useTransform(scrollY, [0, windowHeight * 0.5, windowHeight * 0.8], [0, 0, 1]);
 
     useEffect(() => {
         if (!mountRef.current) return;
@@ -272,10 +281,12 @@ const ThreeBackground = () => {
     }, []);
 
     return (
-        <div
-            ref={mountRef}
+        <motion.div
+            style={{ opacity }}
             className="fixed inset-0 z-0 pointer-events-none"
-        />
+        >
+            <div ref={mountRef} className="w-full h-full" />
+        </motion.div>
     );
 };
 

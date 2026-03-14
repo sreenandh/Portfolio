@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { GraduationCap, Calendar, MapPin, Award, ExternalLink, Trophy, Sparkles } from 'lucide-react';
+import { LuGraduationCap as GraduationCap, LuCalendar as Calendar, LuMapPin as MapPin, LuAward as Award, LuExternalLink as ExternalLink, LuTrophy as Trophy, LuSparkles as Sparkles } from 'react-icons/lu';
 
 const Education = () => {
   const [ref, inView] = useInView({

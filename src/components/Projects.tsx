@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { ExternalLink, Github, Zap, ArrowRight } from "lucide-react";
+import { LuExternalLink as ExternalLink, LuGithub as Github, LuZap as Zap, LuArrowRight as ArrowRight } from "react-icons/lu";
 
 interface Project {
   title: string;

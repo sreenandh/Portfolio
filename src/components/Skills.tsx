@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code, Server, Database, Wrench, Zap, Brain, Sparkles } from 'lucide-react';
+import { LuCode as Code, LuServer as Server, LuDatabase as Database, LuWrench as Wrench, LuZap as Zap, LuBrain as Brain, LuSparkles as Sparkles } from 'react-icons/lu';
 import AnimatedCounter from './AnimatedCounter';
 
 interface SkillCategory {

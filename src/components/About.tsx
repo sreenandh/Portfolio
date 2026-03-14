@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { User, MapPin, Award, GraduationCap, Code } from 'lucide-react';
+import { LuUser as User, LuMapPin as MapPin, LuAward as Award, LuGraduationCap as GraduationCap, LuCode as Code } from 'react-icons/lu';
 import { getCurrentExperience } from '../utils/experienceCalculator';
 
 const About: React.FC = () => {
