@@ -4,7 +4,7 @@ import {
   LuGithub as Github,
   LuLinkedin as Linkedin,
   LuMail as Mail,
-  LuPhone as Phone,
+  LuPhone as Phone, 
   LuExternalLink as ExternalLink,
   LuSparkles as Sparkles,
 } from "react-icons/lu";
