@@ -150,7 +150,7 @@ const ProjectCard: React.FC<{ project: Project; index: number; inView: boolean }
           {project.title}
         </motion.h3>
 
-        <p className="text-gray-400 mb-6 leading-relaxed line-clamp-3 group-hover:text-gray-300 transition-colors duration-300">
+        <p className="text-gray-400 mb-6 leading-relaxed line-clamp-3 group-hover:text-gray-300 transition-colors duration-300 min-h-[4.5rem]">
           {project.description}
         </p>
 
@@ -243,6 +243,25 @@ const Projects: React.FC = () => {
         "Express.js",
         "MySQL",
         "JWT",
+      ],
+      github: "#",
+      live: "#",
+      featured: true,
+    },
+    {
+      title: "Multi-tenant POS & Billing System",
+      description:
+        "A full-stack, multi-tenant POS and Billing system with company-level data isolation, customizable branding, and automated quotation generation. Features include role-based access control, secure JWT authentication, and PDF export for sales tracking.",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
+      technologies: [
+        "React 18",
+        "TypeScript",
+        "Node.js",
+        "Express.js",
+        "MySQL",
+        "Zustand",
+        "Zod",
       ],
       github: "#",
       live: "#",
